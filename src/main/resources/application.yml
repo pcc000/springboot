@@ -1,0 +1,11 @@
+server:
+  port: 8081
+name: penchengcheng
+student:
+  name: pcc
+  age: 26
+spring:
+  mvc:
+    view:
+      prefix: /WEB_INF/views/
+      suffix: .jsp
