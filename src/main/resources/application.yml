@@ -10,9 +10,9 @@ spring:
       prefix: /WEB_INF/views/
       suffix: .jsp
   datasource:
-    url: jdbc:mysql://10.32.16.108:3306/auth
-    username: auth_rw
-    password: tuniu520
+    url: jdbc:mysql://10.32.16.108:3306/***
+    username: ***
+    password: ***
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
