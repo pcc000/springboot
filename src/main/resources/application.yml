@@ -1,5 +1,10 @@
 server:
   port: 8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 name: penchengcheng
 student:
   name: pcc
@@ -10,9 +15,9 @@ spring:
       prefix: /WEB_INF/views/
       suffix: .jsp
   datasource:
-    url: jdbc:mysql://10.32.16.108:3306/***
-    username: ***
-    password: ***
+    url: jdbc:mysql://****/****
+    username: *****
+    password: *****
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
