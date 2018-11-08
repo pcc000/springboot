@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,10 @@ public class HelloController {
 
     @RequestMapping("/hello2")
     public String hello2(){
-        return "hello  "+sudentPreperties.getName()+sudentPreperties.getAge();
+        return "hello  " + sudentPreperties.getName() + sudentPreperties.getAge();
+    }
+
+    public static void main(String []arg){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.blackfish.springboot.order");
     }
 }
