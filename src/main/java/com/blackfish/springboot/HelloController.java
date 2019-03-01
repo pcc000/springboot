@@ -9,6 +9,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * @Auther: chengchengpeng
  * @Date: 2018/10/23 14:05
@@ -33,7 +36,12 @@ public class HelloController {
         return "hello  " + sudentPreperties.getName() + sudentPreperties.getAge();
     }
 
-    public static void main(String []arg){
+    public static void main(String []arg) throws UnknownHostException {
+        InetAddress address = InetAddress.getLocalHost();//获取的是本地的IP地址 //PC-20140317PXKX/192.168.0.121
+        String hostAddress = address.getHostAddress();//192.168.0.121
+
+        System.out.println(hostAddress);
+
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.blackfish.springboot.order");
     }
 }

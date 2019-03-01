@@ -19,10 +19,10 @@ public class UserBeanDefinitionParser extends AbstractSingleBeanDefinitionParser
 
     @Override
     protected void doParse(Element element, BeanDefinitionBuilder builder) {
-        String  user = element.getAttribute("user");
+        String  user = element.getAttribute("name");
         String email = element.getAttribute("email");
         if(StringUtils.hasText(user)){
-            builder.addPropertyValue("user",user);
+            builder.addPropertyValue("name",user);
         }
         if(StringUtils.hasText(email)){
             builder.addPropertyValue("email",email);
