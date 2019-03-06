@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:myname="http://www.blackfish.com/schema/user"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.blackfish.com/schema/user http://www.blackfish.com/schema/user.xsd">
+                           http://www.blackfish.com   /schema/user http://www.blackfish.com/schema/user.xsd">
 
       <myname:user id="test" name="123" email="123123"/>
 </beans>

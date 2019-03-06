@@ -1,8 +1,12 @@
 package com.blackfish.springSource.bean;
 
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.beans.factory.parsing.EmptyReaderEventListener;
+import org.springframework.beans.factory.parsing.FailFastProblemReporter;
+import org.springframework.beans.factory.parsing.NullSourceExtractor;
+import org.springframework.beans.factory.xml.*;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import java.util.HashMap;
@@ -28,6 +32,10 @@ public class BeanFactoryTest {
         TestBean test = (TestBean) bf.getBean("test");
         System.out.println(test.getStr());
 
+        DefaultBeanDefinitionDocumentReader reader = new DefaultBeanDefinitionDocumentReader();
+
+//        new XmlReaderContext(new ClassPathResource("bean/BeanFactory.xml"), new FailFastProblemReporter(), new EmptyReaderEventListener(),
+//                new NullSourceExtractor(), new XmlBeanDefinitionReader(), new PathMatchingResourcePatternResolver());
     }
 
 }
