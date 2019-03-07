@@ -13,5 +13,7 @@
         <property name="name" value="lisi"/>
     </bean>
 
+    <bean id="beanFactoryAwareTest" class="com.blackfish.springSource.aware.BeanFactoryAwareTest"/>
+
 
 </beans>

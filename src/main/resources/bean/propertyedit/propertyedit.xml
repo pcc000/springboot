@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+      <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+            <!--<property name="customEditors">-->
+                  <!--<map>-->
+                        <!--<entry key="java.util.Date" value="com.blackfish.springSource.bean.propertyedit.DatePropertyEditor">-->
+                        <!--</entry>-->
+                  <!--</map>-->
+            <!--</property>-->
+            
+            <property name="propertyEditorRegistrars">
+                  <list>
+                        <bean class="com.blackfish.springSource.bean.propertyedit.spring.DatePropertyEditorRegistrar"></bean>
+                  </list>
+            </property>
+      </bean>
+
+      <bean id="test" class="com.blackfish.springSource.bean.propertyedit.User">
+            <property name="brithDay" value="2019-03-07"/>
+      </bean>
+
+
+</beans>
+
+        <!--<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd:/spring-beans.dtd">-->

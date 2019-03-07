@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+      <beans profile="dev">
+            <bean id="student" class="com.blackfish.springSource.bean.factorybean.StudentFactoryBean" p:studentInfo="张三,25,dev三年二班"/>
+      </beans>
+
+      <beans profile="pro">
+            <bean id="student1" class="com.blackfish.springSource.bean.factorybean.StudentFactoryBean" p:studentInfo="张三,25,pro三年二班"/>
+      </beans>
+</beans>
+
+        <!--<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd:/spring-beans.dtd">-->

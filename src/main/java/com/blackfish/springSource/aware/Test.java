@@ -20,5 +20,9 @@ public class Test {
         User1 user1 = applicationContext.getBean(User1.class);
         System.out.println(String.format("实现了BeanNameAware接口的信息BeanId=%s,所有信息=%s",user1.getId(),user1.toString()));
 
+        //===beanFactoryAware
+        BeanFactoryAwareTest beanFactoryAwareTest = (BeanFactoryAwareTest) applicationContext.getBean("beanFactoryAwareTest");
+        beanFactoryAwareTest.testBeanFactoryAware();
+
     }
 }
