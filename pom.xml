@@ -104,6 +104,12 @@
             <version>3.5.4-beta</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.10</version>
+        </dependency>
+
     </dependencies>
 
     <build>
