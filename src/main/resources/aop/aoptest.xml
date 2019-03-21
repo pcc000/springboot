@@ -6,6 +6,7 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
       <aop:aspectj-autoproxy/>
+
       <bean id="aopTestBean" class="com.blackfish.springSource.aop.TestBean"></bean>
       <bean class="com.blackfish.springSource.aop.AspectJTest"></bean>
 </beans>
