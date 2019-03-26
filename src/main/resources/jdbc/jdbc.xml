@@ -6,9 +6,9 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://ip:port/dataName?characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;zeroDateTimeBehavior=convertToNull"></property>
-        <property name="username" value="username"></property>
-        <property name="password" value="password"></property>
+        <property name="url" value="jdbc:mysql://master.db.sit.blackfi.sh:5721/iwu_preaprv?characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;zeroDateTimeBehavior=convertToNull"></property>
+        <property name="username" value="iwu_preaprv_rw"></property>
+        <property name="password" value="xhy520"></property>
     </bean>
 
     <bean id="userService" class="com.blackfish.springSource.jdbc.UserServiceImpl">
