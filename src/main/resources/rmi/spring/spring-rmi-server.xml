@@ -12,6 +12,8 @@
         <property name="serviceName" value="helloRMI"/>
         <property name="serviceInterface" value="com.blackfish.springSource.rmi.spring.HelloRMIService"/>
         <property name="registryPort" value="8889"/>
+        <property name="servicePort" value="8080"/>
+        <!--<property name="registryHost" value="127.0.0.1"/>-->
      </bean>
 
 

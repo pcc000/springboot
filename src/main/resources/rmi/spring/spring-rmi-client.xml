@@ -6,7 +6,7 @@
 
 
     <bean id="myClient" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceUrl" value="RMI://127.0.0.1:10002/helloRMI"/>
+        <property name="serviceUrl" value="rmi://127.0.0.1:10002/helloRMI"/>
         <property name="serviceInterface" value="com.blackfish.springSource.rmi.spring.HelloRMIService"/>
     </bean>
 
