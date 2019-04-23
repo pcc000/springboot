@@ -51,7 +51,7 @@ public class Test {
         Map<String,String> extraParam = new HashMap<>();
         extraParam.put("name","小明");
         extraParam.put("certNo","");
-        extraParam.put("mobile","18252059044");
+        extraParam.put("mobile","");
         test.setExtParam(extraParam);
         System.out.println(JsonUtil.toString(test));
         StringEntity se = new StringEntity(JsonUtil.toString(test), "utf-8");
