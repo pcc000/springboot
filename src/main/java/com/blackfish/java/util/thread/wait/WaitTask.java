@@ -19,6 +19,7 @@ public class WaitTask implements Runnable {
             System.out.println("wait before:");
             try {
                 o.wait();
+//                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

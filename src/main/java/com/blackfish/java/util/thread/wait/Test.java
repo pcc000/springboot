@@ -13,6 +13,8 @@ public class Test {
         NotifyTask notifyTask = new NotifyTask(lock);
         Thread thread = new Thread(a);
         thread.start();
+        Thread thread1 = new Thread(a);
+        thread1.start();
         Thread.sleep(1000);
         Thread thread2 = new Thread(notifyTask);
         thread2.start();

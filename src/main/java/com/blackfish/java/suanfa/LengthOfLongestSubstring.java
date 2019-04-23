@@ -1,6 +1,13 @@
 package com.blackfish.java.suanfa;
 
+import com.blackfish.java.util.client.ClientResultDTO;
+import com.blackfish.java.util.client.HttpClientUtil;
+import sun.net.www.http.HttpClient;
+
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -39,6 +46,36 @@ public class LengthOfLongestSubstring {
         return max;
     }
 
+    public int lengthOfLongestSubstring2(String s) {
+        int length = s.length();
+        int i=0,j=0,max=0;
+        Set<Character> set = new HashSet<>();
+        while(i<length && j<length){
+            if(set.contains(s.charAt(i))){
+                set.remove(s.charAt(j++));
+            }else{
+                set.add(s.charAt(i++));
+                max = Math.max(max,i-j);
+            }
+        }
+        return max;
+    }
+
+    public int lengthOfLongestSubstring(String s) {
+        int length = s.length();
+        Set<Character> set = new HashSet<>();
+        int max=0;
+        for(int i=0,j=0;i<length;i++){
+            if(set.contains(s.charAt(i))){
+
+            }else{
+                set.add(s.charAt(i++));
+                max = Math.max(max,i-j);
+            }
+        }
+        return max;
+    }
+
     public boolean isUnique(String s,int i,int j){
         Set<Character> set = new HashSet<Character>();
         for(int t=i;t<j;t++){
@@ -51,8 +88,8 @@ public class LengthOfLongestSubstring {
         return true;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         LengthOfLongestSubstring ll = new LengthOfLongestSubstring();
-        System.out.println(ll.lengthOfLongestSubstring1("123213123"));
-    }
+        System.out.println(ll.lengthOfLongestSubstring("pwwkew"));
+        }
 }
