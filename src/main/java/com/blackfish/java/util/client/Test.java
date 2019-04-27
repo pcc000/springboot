@@ -48,10 +48,12 @@ public class Test {
         param.put("Content-Type","application/json");
         param.put("charset","UTF-8");
         Test test = new Test();
+        test.setPartnerId("blackfish");
+        test.setVerifyKey("8090e6e680a146b3a36ffe46d19578d1");
         Map<String,String> extraParam = new HashMap<>();
         extraParam.put("name","小明");
         extraParam.put("certNo","");
-        extraParam.put("mobile","");
+        extraParam.put("mobile","18252059044");
         test.setExtParam(extraParam);
         System.out.println(JsonUtil.toString(test));
         StringEntity se = new StringEntity(JsonUtil.toString(test), "utf-8");
