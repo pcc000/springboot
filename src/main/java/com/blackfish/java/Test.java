@@ -1,5 +1,7 @@
 package com.blackfish.java;
 
+import java.util.Collections;
+
 /**
  * @Auther: chengchengpeng
  * @Date: 2019/4/12 11:30
@@ -20,6 +22,8 @@ public class Test {
 
 
     public static void main(String[] args) {
+//        Collections.max();
+        
         int[] nums = new int[]{2,3,8,7,11};
         Test test = new Test();
         System.out.println(test.twoSum(nums,9)[0]+" ,"+test.twoSum(nums,9)[1]);

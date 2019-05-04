@@ -14,5 +14,6 @@ public class Test {
         Jedis jedis = new Jedis("192.168.0.106");
         System.out.println(jedis.ping());
         System.out.println(jedis.get("pcc"));
+        jedis.set("123", "213", "NX", "PX",100);
     }
 }
