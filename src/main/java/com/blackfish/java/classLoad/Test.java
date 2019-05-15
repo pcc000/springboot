@@ -11,16 +11,17 @@ import java.util.Map;
  */
 public class Test {
     public static void main(String arg[]){
-        new Son();
+        new Son("pcc");
         System.out.println("-----------------");
         new Son();
 
 
-        Map<String,String> map = new HashMap<String,String>();
-        map.put("1","pcc");
-        map.put("2","sfsd");
-        map = Collections.unmodifiableMap(map);
-
-        System.out.println(map.get("1"));
+//        Map<String,String> map = new HashMap<String,String>();
+//        map.put("1","pcc");
+//        map.put("2","sfsd");
+//
+//        map = Collections.unmodifiableMap(map);
+//
+//        System.out.println(map.get("1"));
     }
 }

@@ -1,6 +1,8 @@
 package com.blackfish.java;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @Auther: chengchengpeng
@@ -23,9 +25,14 @@ public class Test {
 
     public static void main(String[] args) {
 //        Collections.max();
-        
-        int[] nums = new int[]{2,3,8,7,11};
-        Test test = new Test();
-        System.out.println(test.twoSum(nums,9)[0]+" ,"+test.twoSum(nums,9)[1]);
+//        List<Integer> lists = new ArrayList<>();
+//        List<String> stringLists = new ArrayList<>();
+//        lists.containsAll(stringLists);
+//        Collections.max(lists);
+//        int[] nums = new int[]{2,3,8,7,11};
+//        Test test = new Test();
+//        System.out.println(test.twoSum(nums,9)[0]+" ,"+test.twoSum(nums,9)[1]);
+        int i=3;
+        System.out.println(2&-2);
     }
 }

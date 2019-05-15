@@ -7,6 +7,10 @@ package com.blackfish.java.classLoad;
  */
 public class Son extends Parent {
 
+    Parent paren;
+
+    private String name;
+
     static{
         System.out.println("son static run!!!");
     }
@@ -17,5 +21,11 @@ public class Son extends Parent {
 
     public Son(){
         System.out.println("son constract method run!!!");
+    }
+
+    public Son(String name){
+        System.out.println("son argument constract method run!!!");
+        this.name = name;
+        paren = new Parent(name);
     }
 }

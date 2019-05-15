@@ -18,4 +18,8 @@ public class Parent {
     public Parent(){
         System.out.println("parent constract method run !!!");
     }
+
+    public Parent(String name){
+        System.out.println("parent argument constract method run !!!");
+    }
 }
