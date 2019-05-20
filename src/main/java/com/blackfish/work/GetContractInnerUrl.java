@@ -111,7 +111,7 @@ public class GetContractInnerUrl {
 //		if(builder == null){
 //			return ;
 //		}
-		String[] lists = "11902210059330156,11903010784238254,11903151402010706".toString().split(",");
+		String[] lists = "11905171461443079,11905171384211485".toString().split(",");
 		StringBuilder resultBuilder = new StringBuilder();
         for(String str : lists){
         	GetContractInnerUrl test = new GetContractInnerUrl();
