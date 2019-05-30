@@ -19,16 +19,18 @@ public class NormalMode {
         Watcher myWatcher = new Watcher() {
             @Override
             public void process(WatchedEvent watchedEvent) {
-
+                System.out.println("WatchedEvent");
             }
         };
         AsyncCallback.StatCallback existsCallback = new AsyncCallback.StatCallback() {
             @Override
             public void processResult(int i, String s, Object o, Stat stat) {
-
+                System.out.println("processResult");
             }
         };
         zk.exists("/myZnode",myWatcher,existsCallback,null);
+
+        Thread.sleep(100000);
 
     }
 

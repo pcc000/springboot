@@ -34,7 +34,7 @@ public class AdminClient implements Watcher {
             Date startDate = new Date(stat.getCtime());
             System.out.println("Master: " + new String(masterData) + " since " + startDate);
         } catch (KeeperException.NoNodeException e){
-                System.out.println("No master");
+            System.out.println("No master");
         }catch (Exception e) {
 
         }

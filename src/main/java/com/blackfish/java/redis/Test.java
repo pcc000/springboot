@@ -11,9 +11,9 @@ import redis.clients.jedis.Jedis;
 public class Test {
 
     public static void main(String[] args) {
-        Jedis jedis = new Jedis("192.168.0.106");
-        System.out.println(jedis.ping());
+        Jedis jedis = new Jedis("127.0.0.1",6379);
+//        System.out.println(jedis.ping());
+        jedis.set("pcc", "213");
         System.out.println(jedis.get("pcc"));
-        jedis.set("123", "213", "NX", "PX",100);
     }
 }
