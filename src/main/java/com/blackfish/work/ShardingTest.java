@@ -32,7 +32,8 @@ public class ShardingTest {
 //        System.out.println(table1+NumericEnum.ONE.value);
 
         List<String> list = new ArrayList<>();
-        list.add("1001166");
+        list.add("1001251");
+        list.add("1001250");
 
 
         Set<String> stringSet = new HashSet<>();
@@ -47,7 +48,7 @@ public class ShardingTest {
             }else if(sub==1){
                 subss=  "02";
             }
-            String tablePrefix ="snt_stwms_sub_"+subss+".inventory_info_";
+            String tablePrefix ="snt_stwms_sub_"+subss+".inventory_info_log_";
             String s = String.valueOf(sharding);
             if(s.length()==1){
                 s = "00"+s;
