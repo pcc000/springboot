@@ -32,8 +32,7 @@ public class ShardingTest {
 //        System.out.println(table1+NumericEnum.ONE.value);
 
         List<String> list = new ArrayList<>();
-        list.add("1001251");
-        list.add("1001250");
+        list.add("1001056");
 
 
         Set<String> stringSet = new HashSet<>();
