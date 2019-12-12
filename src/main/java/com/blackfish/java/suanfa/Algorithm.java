@@ -25,6 +25,12 @@ public class Algorithm {
         map.put("9","wxyz");
     }
 
+    /**
+     * 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
+     * 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
+     * @param digits
+     * @return
+     */
     public List<String> letterCombinations(String digits) {
         List<String> resultList = new ArrayList<>();
         letterCombinationsBackTracking(digits,"",resultList);
@@ -48,6 +54,12 @@ public class Algorithm {
         return resultList;
     }
 
+    /**
+     * 给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
+     * 例如，给出 n = 3，生成结果为
+     * @param n
+     * @return
+     */
     public List<String> generateParenthesis(int n) {
         long start = System.currentTimeMillis();
         List<String> resultList = new ArrayList<>();
@@ -70,9 +82,18 @@ public class Algorithm {
         }
     }
 
+    /**
+     *给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
+     * candidates 中的数字可以无限制重复被选取。
+     * 说明：
+     * 所有数字（包括 target）都是正整数。
+     * 解集不能包含重复的组合。 
+     * @param candidates
+     * @param target
+     * @return
+     */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> resultList = new ArrayList<>();
-//        Arrays.sort(candidates);
         combinationSumBackTracking(resultList,new ArrayList<>(),0,candidates,target);
         System.out.println(JsonUtil.toJson(resultList));
         return resultList;
@@ -93,6 +114,16 @@ public class Algorithm {
         }
     }
 
+    /**
+     * 给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
+     * candidates 中的每个数字在每个组合中只能使用一次。
+     * 说明：
+     * 所有数字（包括目标数）都是正整数。
+     * 解集不能包含重复的组合。 
+     * @param candidates
+     * @param target
+     * @return
+     */
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> resultList = new ArrayList<>();
         Arrays.sort(candidates);
