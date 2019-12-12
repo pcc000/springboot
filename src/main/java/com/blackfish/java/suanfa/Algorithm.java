@@ -2,10 +2,7 @@ package com.blackfish.java.suanfa;
 
 import com.blackfish.java.util.common.JsonUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Auther: shuyiwei
@@ -96,11 +93,85 @@ public class Algorithm {
         }
     }
 
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        combinationSum2BackTracking(resultList,new ArrayList<>(),0,candidates,target);
+        System.out.println(JsonUtil.toJson(resultList));
+        return resultList;
+    }
+
+    public void combinationSum2BackTracking(List<List<Integer>> resultList,List<Integer> list,int temp,int[] candidates,int target){
+        if(target<0) return;
+        if(0==target){
+            if(resultList.size()==0){
+                List<Integer> listTemp = new ArrayList<>(list);
+                listTemp.sort(new Comparator<Integer>() {
+                    @Override
+                    public int compare(Integer o1, Integer o2) {
+                        return o1-o2;
+                    }
+                });
+                resultList.add(new ArrayList<>(listTemp));
+                return ;
+            }
+            boolean notSameflag = false;
+            for(List<Integer> lists : resultList){
+                if(lists.size()==list.size()){
+                    List<Integer> listTemp = new ArrayList<>(list);
+                    listTemp.sort(new Comparator<Integer>() {
+                        @Override
+                        public int compare(Integer o1, Integer o2) {
+                            return o1-o2;
+                        }
+                    });
+                    boolean f = true;
+                    for(int j=0;j<list.size();j++){
+                        if(listTemp.get(j)!=lists.get(j)){
+                            f = false;
+                            break;
+                        }
+                    }
+                    if(!f){
+                        notSameflag= false;
+                    }else{
+                        notSameflag = true;
+                        break;
+                    }
+                }
+            }
+            if(!notSameflag){
+                List<Integer> listTemp = new ArrayList<>(list);
+                listTemp.sort(new Comparator<Integer>() {
+                    @Override
+                    public int compare(Integer o1, Integer o2) {
+                        return o1-o2;
+                    }
+                });
+                resultList.add(new ArrayList<>(listTemp));
+                return ;
+            }
+            return;
+        }
+        for(int i=temp;i<candidates.length;i++){
+            if(candidates[i]<=target){
+                list.add(candidates[i]);
+                int[] newCandidates = new int[candidates.length-1];
+                for(int j=0;j<newCandidates.length;j++){
+                    newCandidates[j]=candidates[j+1];
+                }
+                combinationSum2BackTracking(resultList,list,i,newCandidates,target-candidates[i]);
+                list.remove(list.size()-1);
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         new Algorithm().letterCombinations("212");
         new Algorithm().generateParenthesis(4);
         int[]  ints= {6,7,2,3};
         new Algorithm().combinationSum(ints,7);
+        int[] ss = {3,1,3,5,1,1};
+        new Algorithm().combinationSum2(ss,8);
     }
 }
