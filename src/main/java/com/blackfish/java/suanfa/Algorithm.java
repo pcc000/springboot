@@ -218,6 +218,38 @@ public class Algorithm {
         }
     }
 
+    /**
+     * 给定一个没有重复数字的序列，返回其所有可能的全排列。
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            list.add(nums[i]);
+        }
+        permuteBackTracking(resultList,new ArrayList<Integer>(),list);
+        System.out.println(JsonUtil.toJson(resultList));
+        return resultList;
+    }
+
+    private void permuteBackTracking(List<List<Integer>> resultList,List<Integer> list,List<Integer> nums){
+        if(nums.size()==0){
+            resultList.add(new ArrayList<>(list));
+            return;
+        }
+        for(int i=0;i<nums.size();i++){
+            list.add(nums.get(i));
+            List<Integer> newNums = new ArrayList<>(nums);
+            newNums.remove(Integer.valueOf(nums.get(i)));
+            permuteBackTracking(resultList,list,newNums);
+            list.remove(list.size()-1);
+        }
+    }
+
+
+
 
     public static void main(String[] args) {
         new Algorithm().letterCombinations("212");
@@ -226,5 +258,8 @@ public class Algorithm {
         new Algorithm().combinationSum(ints,7);
         int[] ss = {3,1,3,5,1,1};
         new Algorithm().combinationSum2(ss,8);
+
+        int[] tt = {1,2,3};
+        new Algorithm().permute(tt);
     }
 }
