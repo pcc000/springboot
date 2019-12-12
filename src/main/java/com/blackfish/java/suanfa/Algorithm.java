@@ -95,9 +95,31 @@ public class Algorithm {
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> resultList = new ArrayList<>();
-        combinationSum2BackTracking(resultList,new ArrayList<>(),0,candidates,target);
+        Arrays.sort(candidates);
+        combinationSum2NewBackTracking(resultList,new ArrayList<>(),0,candidates,target);
         System.out.println(JsonUtil.toJson(resultList));
         return resultList;
+    }
+
+    public void combinationSum2NewBackTracking(List<List<Integer>> resultList,List<Integer> list,int temp,int[] candidates,int target){
+        if(target<0) return;
+        if(0==target){
+            if(!resultList.contains(list)){
+                resultList.add(new ArrayList<>(list));
+            }
+            return ;
+        }
+        for(int i=temp;i<candidates.length;i++){
+            if(candidates[i]<=target){
+                list.add(candidates[i]);
+                int[] newCandidates = new int[candidates.length-1];
+                for(int j=0;j<newCandidates.length;j++){
+                    newCandidates[j]=candidates[j+1];
+                }
+                combinationSum2NewBackTracking(resultList,list,i,newCandidates,target-candidates[i]);
+                list.remove(list.size()-1);
+            }
+        }
     }
 
     public void combinationSum2BackTracking(List<List<Integer>> resultList,List<Integer> list,int temp,int[] candidates,int target){
