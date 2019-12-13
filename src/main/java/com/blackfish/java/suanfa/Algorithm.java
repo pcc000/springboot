@@ -248,6 +248,36 @@ public class Algorithm {
         }
     }
 
+    /**
+     * 给定一个可包含重复数字的序列，返回所有不重复的全排列。
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            list.add(nums[i]);
+        }
+        permuteUniqueBackTracking(resultList,new ArrayList<Integer>(),list,list.size());
+        System.out.println(JsonUtil.toJson(resultList));
+        return resultList;
+    }
+
+    private void permuteUniqueBackTracking(List<List<Integer>> resultList,List<Integer> list,List<Integer> nums,int max){
+        if(list.size()!=0 && !resultList.contains(list) && list.size()==max){
+            resultList.add(new ArrayList<>(list));
+            return ;
+        }
+        for(int i=0;i<nums.size();i++){
+            list.add(nums.get(i));
+            List<Integer> newNums = new ArrayList<>(nums);
+            newNums.remove(Integer.valueOf(nums.get(i)));
+            permuteUniqueBackTracking(resultList,list,newNums,max);
+            list.remove(list.size()-1);
+        }
+    }
+
 
 
 
@@ -261,5 +291,8 @@ public class Algorithm {
 
         int[] tt = {1,2,3};
         new Algorithm().permute(tt);
+
+        int[] yy ={1,1,2};
+        new Algorithm().permuteUnique(yy);
     }
 }
