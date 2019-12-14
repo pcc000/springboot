@@ -254,32 +254,87 @@ public class Algorithm {
      * @return
      */
     public List<List<Integer>> permuteUnique(int[] nums) {
+        long start = System.currentTimeMillis();
         List<List<Integer>> resultList = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
         for(int i=0;i<nums.length;i++){
             list.add(nums[i]);
         }
-        permuteUniqueBackTracking(resultList,new ArrayList<Integer>(),list,list.size());
+        permuteUniqueBackTracking(resultList,new ArrayList<Integer>(),list);
         System.out.println(JsonUtil.toJson(resultList));
+        System.out.println("permuteUnique cost:"+(System.currentTimeMillis()-start)+"ms");
         return resultList;
     }
 
-    private void permuteUniqueBackTracking(List<List<Integer>> resultList,List<Integer> list,List<Integer> nums,int max){
-        if(list.size()!=0 && !resultList.contains(list) && list.size()==max){
-            resultList.add(new ArrayList<>(list));
+    private void permuteUniqueBackTracking(List<List<Integer>> resultList,List<Integer> list,List<Integer> nums){
+        if(nums.size()==0){
+            if(!resultList.contains(list)){
+                resultList.add(new ArrayList<>(list));
+            }
             return ;
         }
+
         for(int i=0;i<nums.size();i++){
             list.add(nums.get(i));
             List<Integer> newNums = new ArrayList<>(nums);
             newNums.remove(Integer.valueOf(nums.get(i)));
-            permuteUniqueBackTracking(resultList,list,newNums,max);
+            permuteUniqueBackTracking(resultList,list,newNums);
             list.remove(list.size()-1);
         }
     }
 
 
+    /**
+     * n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
+     * @param n
+     * @return
+     */
+    public List<List<String>> solveNQueens(int n) {
+        List<List<String>> resultList = new ArrayList<>();
+        char[][] input = new char[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                input[i][j] ='.';
+            }
+        }
+        solveNQueensBackTracking(resultList,0,n,input);
+        System.out.println(JsonUtil.toJson(resultList));
+        return  resultList;
+    }
 
+    private void solveNQueensBackTracking(List<List<String>> resultList,int x,int n,char[][] input){
+        if(x==n){
+            resultList.add(solveNQueensChar2List(input));
+            return;
+        }
+        for(int j=0;j<n;j++){
+            if(isValid(input,x,j)){
+                input[x][j] = 'Q';
+                solveNQueensBackTracking(resultList,x+1,n,input);
+                input[x][j] = '.';
+            }
+        }
+
+    }
+
+    private List<String> solveNQueensChar2List(char[][] input){
+        List<String> result = new ArrayList<>();
+        for(int i=0;i<input.length;i++){
+            result.add(new String(input[i]));
+        }
+        return result;
+    }
+
+    private boolean isValid(char[][] input,int x,int y){
+        for(int i=0;i<x;i++){
+            for(int j=0;j<input[i].length;j++){
+                if(input[i][j]=='Q' &&(Math.abs(x-i)==Math.abs(y-j) || j==y)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     public static void main(String[] args) {
         new Algorithm().letterCombinations("212");
@@ -294,5 +349,7 @@ public class Algorithm {
 
         int[] yy ={1,1,2};
         new Algorithm().permuteUnique(yy);
+
+        new Algorithm().solveNQueens(4);
     }
 }
