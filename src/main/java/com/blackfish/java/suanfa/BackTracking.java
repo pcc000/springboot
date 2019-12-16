@@ -5,11 +5,13 @@ import com.blackfish.java.util.common.JsonUtil;
 import java.util.*;
 
 /**
+ *
+ * 回溯算法
  * @Auther: shuyiwei
  * @Date: 2019/12/4 14:12
  * @Description:
  */
-public class Algorithm {
+public class BackTracking {
 
     private static HashMap<String,String> map;
 
@@ -336,20 +338,37 @@ public class Algorithm {
         return true;
     }
 
+    /**
+     * n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
+     * @param n
+     * @return 多少种解法
+     */
+    public int totalNQueens(int n) {
+        List<List<String>> resultList = new ArrayList<>();
+        char[][] input = new char[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                input[i][j] ='.';
+            }
+        }
+        solveNQueensBackTracking(resultList,0,n,input);
+        return  resultList.size();
+    }
+
     public static void main(String[] args) {
-        new Algorithm().letterCombinations("212");
-        new Algorithm().generateParenthesis(4);
+        new BackTracking().letterCombinations("212");
+        new BackTracking().generateParenthesis(4);
         int[]  ints= {6,7,2,3};
-        new Algorithm().combinationSum(ints,7);
+        new BackTracking().combinationSum(ints,7);
         int[] ss = {3,1,3,5,1,1};
-        new Algorithm().combinationSum2(ss,8);
+        new BackTracking().combinationSum2(ss,8);
 
         int[] tt = {1,2,3};
-        new Algorithm().permute(tt);
+        new BackTracking().permute(tt);
 
         int[] yy ={1,1,2};
-        new Algorithm().permuteUnique(yy);
+        new BackTracking().permuteUnique(yy);
 
-        new Algorithm().solveNQueens(4);
+        new BackTracking().solveNQueens(4);
     }
 }
