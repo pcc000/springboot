@@ -12,6 +12,8 @@ import java.util.*;
 public class ShardingTest {
 
     public static void main(String[] args) {
+
+        System.out.println(System.getProperty("user.home"));
 //        long remember = Math.abs(Long.valueOf("15960000001").hashCode()) % 8;
 //        System.out.println(remember);
 ////
@@ -32,9 +34,16 @@ public class ShardingTest {
 //        System.out.println(table1+NumericEnum.ONE.value);
 
         List<String> list = new ArrayList<>();
-        list.add("1001134");
+        list.add("1001399");
+
+        System.out.println("\u6ca1\u6709\u6743\u9650");
+
+        System.out.println("\u8be5\u8ba2\u5355\u975e\u90e8\u5206\u9000\u6b3e\u8ba2\u5355");
+        //1582167521  1582167545
 
 
+
+        System.out.println(System.currentTimeMillis() / 1000);
 
         Set<String> stringSet = new HashSet<>();
 

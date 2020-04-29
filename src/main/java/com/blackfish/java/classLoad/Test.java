@@ -11,9 +11,11 @@ import java.util.Map;
  */
 public class Test {
     public static void main(String arg[]){
-        new Son("pcc");
-        System.out.println("-----------------");
-        new Son();
+//        new Son("pcc");
+//        System.out.println("-----------------");
+//        new Son();
+
+        new Parent();
 
 
 //        Map<String,String> map = new HashMap<String,String>();

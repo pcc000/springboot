@@ -5,7 +5,16 @@ package com.blackfish.java.classLoad;
  * @Date: 2019/1/8 10:51
  * @Description:
  */
-public class Parent {
+public class Parent extends SecondAbstractParent {
+    @Override
+    public void register() {
+
+    }
+
+    @Override
+    public void unregister() {
+
+    }
 
     static{
         System.out.println("parent static run!!!");
