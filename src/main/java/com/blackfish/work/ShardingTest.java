@@ -34,7 +34,7 @@ public class ShardingTest {
 //        System.out.println(table1+NumericEnum.ONE.value);
 
         List<String> list = new ArrayList<>();
-        list.add("1001399");
+        list.add("1001266");
 
         System.out.println("\u6ca1\u6709\u6743\u9650");
 

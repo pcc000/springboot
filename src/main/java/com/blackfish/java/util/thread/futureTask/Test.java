@@ -12,10 +12,12 @@ public class Test {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         Executor threadPool  = Executors.newFixedThreadPool(10);
-        Future<String> result = ((ExecutorService) threadPool).submit(()->{
-            return "";
+        Future<Integer> result = ((ExecutorService) threadPool).submit(()->{
+            return 1;
         });
-        result.get();
+
+        Integer str = result.get();
+        System.out.println(str);
     }
 
 }
