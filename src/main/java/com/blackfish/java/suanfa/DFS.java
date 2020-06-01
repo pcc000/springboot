@@ -24,16 +24,16 @@ public class DFS {
     }
 
     private boolean isValidBSTDFS(TreeNode root){
-        if(null != root.getLeft() && root.getVal()>root.getLeft().getVal()){
-            isValidBSTDFS(root.getLeft());
-        }else {
-            return false;
-        }
-        if(null != root.getRight() && root.getVal()<root.getRight().getVal()){
-            isValidBSTDFS(root.getRight());
-        }else{
-            return false;
-        }
+//        if(null != root.getLeft() && root.getVal()>root.getLeft().getVal()){
+//            isValidBSTDFS(root.getLeft());
+//        }else {
+//            return false;
+//        }
+//        if(null != root.getRight() && root.getVal()<root.getRight().getVal()){
+//            isValidBSTDFS(root.getRight());
+//        }else{
+//            return false;
+//        }
         return true;
     }
 
@@ -44,34 +44,34 @@ public class DFS {
 }
 
 class TreeNode{
-    private int val;
-    private TreeNode left;
-    private TreeNode right;
+     int val;
+     TreeNode left;
+     TreeNode right;
     public TreeNode(int val) {
         this.val = val;
     }
 
-    public int getVal() {
-        return val;
-    }
-
-    public void setVal(int val) {
-        this.val = val;
-    }
-
-    public TreeNode getLeft() {
-        return left;
-    }
-
-    public void setLeft(TreeNode left) {
-        this.left = left;
-    }
-
-    public TreeNode getRight() {
-        return right;
-    }
-
-    public void setRight(TreeNode right) {
-        this.right = right;
-    }
+//    public int getVal() {
+//        return val;
+//    }
+//
+//    public void setVal(int val) {
+//        this.val = val;
+//    }
+//
+//    public TreeNode getLeft() {
+//        return left;
+//    }
+//
+//    public void setLeft(TreeNode left) {
+//        this.left = left;
+//    }
+//
+//    public TreeNode getRight() {
+//        return right;
+//    }
+//
+//    public void setRight(TreeNode right) {
+//        this.right = right;
+//    }
 }
