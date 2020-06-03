@@ -81,48 +81,14 @@ public class LargestRectangleArea {
     }
 
 
-    /**
-     *
-     * 请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
-     * 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
-     * @param root
-     * @return
-     */
-    public boolean isSymmetric(TreeNode root) {
-        if(null == root){
-            return true;
-        }
-        return recursiveTree(root.left,root.right);
-    }
 
-    private boolean recursiveTree(TreeNode left,TreeNode right){
-        if(null != right && null != left){
-            if(right.val != left.val){
-                return false;
-            }else{
-                return recursiveTree(left.left,right.right) && recursiveTree(left.right,right.left);
-            }
-        }else if((null == right && null != left) || (null != right && null == left)){
-            return false;
-        }
-        return true;
-    }
 
 
     public static void main(String[] args) {
-//        int[] heights = new int[]{2,1,2};
+        int[] heights = new int[]{2,1,2};
         LargestRectangleArea largestRectangleArea = new LargestRectangleArea();
-//        int result = largestRectangleArea.largestRectangleArea(heights);
-//
-//        System.out.println(result);
-
-        TreeNode root = new TreeNode(234);
-        TreeNode rootLeft = new TreeNode(2);
-        TreeNode rootRight = new TreeNode(3);
-        root.left=rootLeft;
-        root.right=rootRight;
-        System.out.println(largestRectangleArea.isSymmetric(root));
-
+        int result = largestRectangleArea.largestRectangleArea(heights);
+        System.out.println(result);
     }
 
 }
