@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.songshu.snt.uic.dao.MktAccountGroupDetailMapper">
+  <resultMap id="BaseResultMap" type="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="state_cycle_date" jdbcType="VARCHAR" property="stateCycleDate" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birth_date" jdbcType="VARCHAR" property="birthDate" />
+    <result column="pine_coin" jdbcType="INTEGER" property="pineCoin" />
+    <result column="Growth_value" jdbcType="INTEGER" property="growthValue" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="shop_no" jdbcType="VARCHAR" property="shopNo" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="biz_type" jdbcType="INTEGER" property="bizType" />
+    <result column="first_shop_date" jdbcType="TIMESTAMP" property="firstShopDate" />
+    <result column="last_shop_date" jdbcType="TIMESTAMP" property="lastShopDate" />
+    <result column="half_year_buy_time" jdbcType="INTEGER" property="halfYearBuyTime" />
+    <result column="one_year_buy_time" jdbcType="INTEGER" property="oneYearBuyTime" />
+    <result column="three_years_buy_time" jdbcType="INTEGER" property="threeYearsBuyTime" />
+    <result column="his_buy_time" jdbcType="INTEGER" property="hisBuyTime" />
+    <result column="half_year_exchange_time" jdbcType="INTEGER" property="halfYearExchangeTime" />
+    <result column="one_year_exchange_time" jdbcType="INTEGER" property="oneYearExchangeTime" />
+    <result column="three_years_exchange_time" jdbcType="INTEGER" property="threeYearsExchangeTime" />
+    <result column="his_exchange_time" jdbcType="INTEGER" property="hisExchangeTime" />
+    <result column="half_year_order_fee" jdbcType="INTEGER" property="halfYearOrderFee" />
+    <result column="one_year_order_fee" jdbcType="INTEGER" property="oneYearOrderFee" />
+    <result column="three_years_order_fee" jdbcType="INTEGER" property="threeYearsOrderFee" />
+    <result column="his_order_fee" jdbcType="INTEGER" property="hisOrderFee" />
+    <result column="half_year_per_order_fee" jdbcType="INTEGER" property="halfYearPerOrderFee" />
+    <result column="one_year_per_order_fee" jdbcType="INTEGER" property="oneYearPerOrderFee" />
+    <result column="three_years_per_order_fee" jdbcType="INTEGER" property="threeYearsPerOrderFee" />
+    <result column="his_per_order_fee" jdbcType="INTEGER" property="hisPerOrderFee" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="row_version" jdbcType="INTEGER" property="rowVersion" />
+    <result column="row_status" jdbcType="INTEGER" property="rowStatus" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="ext_att" jdbcType="VARCHAR" property="extAtt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, state_cycle_date, member_id, nick_name, sex, birth_date, pine_coin, Growth_value, 
+    mobile, email, shop_no, shop_name, biz_type, first_shop_date, last_shop_date, half_year_buy_time, 
+    one_year_buy_time, three_years_buy_time, his_buy_time, half_year_exchange_time, one_year_exchange_time, 
+    three_years_exchange_time, his_exchange_time, half_year_order_fee, one_year_order_fee, 
+    three_years_order_fee, his_order_fee, half_year_per_order_fee, one_year_per_order_fee, 
+    three_years_per_order_fee, his_per_order_fee, gmt_create, gmt_modified, row_version, 
+    row_status, creator, operator, ext_att
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from small_mkt_res_dm_account_grouping_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from small_mkt_res_dm_account_grouping_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    insert into small_mkt_res_dm_account_grouping_detail (id, state_cycle_date, member_id, 
+      nick_name, sex, birth_date, 
+      pine_coin, Growth_value, mobile, 
+      email, shop_no, shop_name, 
+      biz_type, first_shop_date, last_shop_date, 
+      half_year_buy_time, one_year_buy_time, three_years_buy_time, 
+      his_buy_time, half_year_exchange_time, one_year_exchange_time, 
+      three_years_exchange_time, his_exchange_time, 
+      half_year_order_fee, one_year_order_fee, three_years_order_fee, 
+      his_order_fee, half_year_per_order_fee, one_year_per_order_fee, 
+      three_years_per_order_fee, his_per_order_fee, 
+      gmt_create, gmt_modified, row_version, 
+      row_status, creator, operator, 
+      ext_att)
+    values (#{id,jdbcType=INTEGER}, #{stateCycleDate,jdbcType=VARCHAR}, #{memberId,jdbcType=BIGINT}, 
+      #{nickName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthDate,jdbcType=VARCHAR}, 
+      #{pineCoin,jdbcType=INTEGER}, #{growthValue,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{shopNo,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, 
+      #{bizType,jdbcType=INTEGER}, #{firstShopDate,jdbcType=TIMESTAMP}, #{lastShopDate,jdbcType=TIMESTAMP}, 
+      #{halfYearBuyTime,jdbcType=INTEGER}, #{oneYearBuyTime,jdbcType=INTEGER}, #{threeYearsBuyTime,jdbcType=INTEGER}, 
+      #{hisBuyTime,jdbcType=INTEGER}, #{halfYearExchangeTime,jdbcType=INTEGER}, #{oneYearExchangeTime,jdbcType=INTEGER}, 
+      #{threeYearsExchangeTime,jdbcType=INTEGER}, #{hisExchangeTime,jdbcType=INTEGER}, 
+      #{halfYearOrderFee,jdbcType=INTEGER}, #{oneYearOrderFee,jdbcType=INTEGER}, #{threeYearsOrderFee,jdbcType=INTEGER}, 
+      #{hisOrderFee,jdbcType=INTEGER}, #{halfYearPerOrderFee,jdbcType=INTEGER}, #{oneYearPerOrderFee,jdbcType=INTEGER}, 
+      #{threeYearsPerOrderFee,jdbcType=INTEGER}, #{hisPerOrderFee,jdbcType=INTEGER}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{rowVersion,jdbcType=INTEGER}, 
+      #{rowStatus,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
+      #{extAtt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    insert into small_mkt_res_dm_account_grouping_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="stateCycleDate != null">
+        state_cycle_date,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthDate != null">
+        birth_date,
+      </if>
+      <if test="pineCoin != null">
+        pine_coin,
+      </if>
+      <if test="growthValue != null">
+        Growth_value,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="shopNo != null">
+        shop_no,
+      </if>
+      <if test="shopName != null">
+        shop_name,
+      </if>
+      <if test="bizType != null">
+        biz_type,
+      </if>
+      <if test="firstShopDate != null">
+        first_shop_date,
+      </if>
+      <if test="lastShopDate != null">
+        last_shop_date,
+      </if>
+      <if test="halfYearBuyTime != null">
+        half_year_buy_time,
+      </if>
+      <if test="oneYearBuyTime != null">
+        one_year_buy_time,
+      </if>
+      <if test="threeYearsBuyTime != null">
+        three_years_buy_time,
+      </if>
+      <if test="hisBuyTime != null">
+        his_buy_time,
+      </if>
+      <if test="halfYearExchangeTime != null">
+        half_year_exchange_time,
+      </if>
+      <if test="oneYearExchangeTime != null">
+        one_year_exchange_time,
+      </if>
+      <if test="threeYearsExchangeTime != null">
+        three_years_exchange_time,
+      </if>
+      <if test="hisExchangeTime != null">
+        his_exchange_time,
+      </if>
+      <if test="halfYearOrderFee != null">
+        half_year_order_fee,
+      </if>
+      <if test="oneYearOrderFee != null">
+        one_year_order_fee,
+      </if>
+      <if test="threeYearsOrderFee != null">
+        three_years_order_fee,
+      </if>
+      <if test="hisOrderFee != null">
+        his_order_fee,
+      </if>
+      <if test="halfYearPerOrderFee != null">
+        half_year_per_order_fee,
+      </if>
+      <if test="oneYearPerOrderFee != null">
+        one_year_per_order_fee,
+      </if>
+      <if test="threeYearsPerOrderFee != null">
+        three_years_per_order_fee,
+      </if>
+      <if test="hisPerOrderFee != null">
+        his_per_order_fee,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="rowVersion != null">
+        row_version,
+      </if>
+      <if test="rowStatus != null">
+        row_status,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="extAtt != null">
+        ext_att,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="stateCycleDate != null">
+        #{stateCycleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null">
+        #{birthDate,jdbcType=VARCHAR},
+      </if>
+      <if test="pineCoin != null">
+        #{pineCoin,jdbcType=INTEGER},
+      </if>
+      <if test="growthValue != null">
+        #{growthValue,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="shopNo != null">
+        #{shopNo,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="firstShopDate != null">
+        #{firstShopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastShopDate != null">
+        #{lastShopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="halfYearBuyTime != null">
+        #{halfYearBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearBuyTime != null">
+        #{oneYearBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsBuyTime != null">
+        #{threeYearsBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="hisBuyTime != null">
+        #{hisBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearExchangeTime != null">
+        #{halfYearExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearExchangeTime != null">
+        #{oneYearExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsExchangeTime != null">
+        #{threeYearsExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="hisExchangeTime != null">
+        #{hisExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearOrderFee != null">
+        #{halfYearOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearOrderFee != null">
+        #{oneYearOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsOrderFee != null">
+        #{threeYearsOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="hisOrderFee != null">
+        #{hisOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearPerOrderFee != null">
+        #{halfYearPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearPerOrderFee != null">
+        #{oneYearPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsPerOrderFee != null">
+        #{threeYearsPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="hisPerOrderFee != null">
+        #{hisPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowVersion != null">
+        #{rowVersion,jdbcType=INTEGER},
+      </if>
+      <if test="rowStatus != null">
+        #{rowStatus,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="extAtt != null">
+        #{extAtt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    update small_mkt_res_dm_account_grouping_detail
+    <set>
+      <if test="stateCycleDate != null">
+        state_cycle_date = #{stateCycleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null">
+        birth_date = #{birthDate,jdbcType=VARCHAR},
+      </if>
+      <if test="pineCoin != null">
+        pine_coin = #{pineCoin,jdbcType=INTEGER},
+      </if>
+      <if test="growthValue != null">
+        Growth_value = #{growthValue,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="shopNo != null">
+        shop_no = #{shopNo,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null">
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        biz_type = #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="firstShopDate != null">
+        first_shop_date = #{firstShopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastShopDate != null">
+        last_shop_date = #{lastShopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="halfYearBuyTime != null">
+        half_year_buy_time = #{halfYearBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearBuyTime != null">
+        one_year_buy_time = #{oneYearBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsBuyTime != null">
+        three_years_buy_time = #{threeYearsBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="hisBuyTime != null">
+        his_buy_time = #{hisBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearExchangeTime != null">
+        half_year_exchange_time = #{halfYearExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearExchangeTime != null">
+        one_year_exchange_time = #{oneYearExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsExchangeTime != null">
+        three_years_exchange_time = #{threeYearsExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="hisExchangeTime != null">
+        his_exchange_time = #{hisExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearOrderFee != null">
+        half_year_order_fee = #{halfYearOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearOrderFee != null">
+        one_year_order_fee = #{oneYearOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsOrderFee != null">
+        three_years_order_fee = #{threeYearsOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="hisOrderFee != null">
+        his_order_fee = #{hisOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearPerOrderFee != null">
+        half_year_per_order_fee = #{halfYearPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearPerOrderFee != null">
+        one_year_per_order_fee = #{oneYearPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsPerOrderFee != null">
+        three_years_per_order_fee = #{threeYearsPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="hisPerOrderFee != null">
+        his_per_order_fee = #{hisPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowVersion != null">
+        row_version = #{rowVersion,jdbcType=INTEGER},
+      </if>
+      <if test="rowStatus != null">
+        row_status = #{rowStatus,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="extAtt != null">
+        ext_att = #{extAtt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    update small_mkt_res_dm_account_grouping_detail
+    set state_cycle_date = #{stateCycleDate,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=BIGINT},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birth_date = #{birthDate,jdbcType=VARCHAR},
+      pine_coin = #{pineCoin,jdbcType=INTEGER},
+      Growth_value = #{growthValue,jdbcType=INTEGER},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      shop_no = #{shopNo,jdbcType=VARCHAR},
+      shop_name = #{shopName,jdbcType=VARCHAR},
+      biz_type = #{bizType,jdbcType=INTEGER},
+      first_shop_date = #{firstShopDate,jdbcType=TIMESTAMP},
+      last_shop_date = #{lastShopDate,jdbcType=TIMESTAMP},
+      half_year_buy_time = #{halfYearBuyTime,jdbcType=INTEGER},
+      one_year_buy_time = #{oneYearBuyTime,jdbcType=INTEGER},
+      three_years_buy_time = #{threeYearsBuyTime,jdbcType=INTEGER},
+      his_buy_time = #{hisBuyTime,jdbcType=INTEGER},
+      half_year_exchange_time = #{halfYearExchangeTime,jdbcType=INTEGER},
+      one_year_exchange_time = #{oneYearExchangeTime,jdbcType=INTEGER},
+      three_years_exchange_time = #{threeYearsExchangeTime,jdbcType=INTEGER},
+      his_exchange_time = #{hisExchangeTime,jdbcType=INTEGER},
+      half_year_order_fee = #{halfYearOrderFee,jdbcType=INTEGER},
+      one_year_order_fee = #{oneYearOrderFee,jdbcType=INTEGER},
+      three_years_order_fee = #{threeYearsOrderFee,jdbcType=INTEGER},
+      his_order_fee = #{hisOrderFee,jdbcType=INTEGER},
+      half_year_per_order_fee = #{halfYearPerOrderFee,jdbcType=INTEGER},
+      one_year_per_order_fee = #{oneYearPerOrderFee,jdbcType=INTEGER},
+      three_years_per_order_fee = #{threeYearsPerOrderFee,jdbcType=INTEGER},
+      his_per_order_fee = #{hisPerOrderFee,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      row_version = #{rowVersion,jdbcType=INTEGER},
+      row_status = #{rowStatus,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      ext_att = #{extAtt,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="state_cycle_date" jdbcType="VARCHAR" property="stateCycleDate" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birth_date" jdbcType="VARCHAR" property="birthDate" />
+    <result column="pine_coin" jdbcType="INTEGER" property="pineCoin" />
+    <result column="Growth_value" jdbcType="INTEGER" property="growthValue" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="shop_no" jdbcType="VARCHAR" property="shopNo" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="biz_type" jdbcType="INTEGER" property="bizType" />
+    <result column="first_shop_date" jdbcType="TIMESTAMP" property="firstShopDate" />
+    <result column="last_shop_date" jdbcType="TIMESTAMP" property="lastShopDate" />
+    <result column="half_year_buy_time" jdbcType="INTEGER" property="halfYearBuyTime" />
+    <result column="one_year_buy_time" jdbcType="INTEGER" property="oneYearBuyTime" />
+    <result column="three_years_buy_time" jdbcType="INTEGER" property="threeYearsBuyTime" />
+    <result column="his_buy_time" jdbcType="INTEGER" property="hisBuyTime" />
+    <result column="half_year_exchange_time" jdbcType="INTEGER" property="halfYearExchangeTime" />
+    <result column="one_year_exchange_time" jdbcType="INTEGER" property="oneYearExchangeTime" />
+    <result column="three_years_exchange_time" jdbcType="INTEGER" property="threeYearsExchangeTime" />
+    <result column="his_exchange_time" jdbcType="INTEGER" property="hisExchangeTime" />
+    <result column="half_year_order_fee" jdbcType="INTEGER" property="halfYearOrderFee" />
+    <result column="one_year_order_fee" jdbcType="INTEGER" property="oneYearOrderFee" />
+    <result column="three_years_order_fee" jdbcType="INTEGER" property="threeYearsOrderFee" />
+    <result column="his_order_fee" jdbcType="INTEGER" property="hisOrderFee" />
+    <result column="half_year_per_order_fee" jdbcType="INTEGER" property="halfYearPerOrderFee" />
+    <result column="one_year_per_order_fee" jdbcType="INTEGER" property="oneYearPerOrderFee" />
+    <result column="three_years_per_order_fee" jdbcType="INTEGER" property="threeYearsPerOrderFee" />
+    <result column="his_per_order_fee" jdbcType="INTEGER" property="hisPerOrderFee" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="row_version" jdbcType="INTEGER" property="rowVersion" />
+    <result column="row_status" jdbcType="INTEGER" property="rowStatus" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="ext_att" jdbcType="VARCHAR" property="extAtt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, state_cycle_date, member_id, nick_name, sex, birth_date, pine_coin, Growth_value, 
+    mobile, email, shop_no, shop_name, biz_type, first_shop_date, last_shop_date, half_year_buy_time, 
+    one_year_buy_time, three_years_buy_time, his_buy_time, half_year_exchange_time, one_year_exchange_time, 
+    three_years_exchange_time, his_exchange_time, half_year_order_fee, one_year_order_fee, 
+    three_years_order_fee, his_order_fee, half_year_per_order_fee, one_year_per_order_fee, 
+    three_years_per_order_fee, his_per_order_fee, gmt_create, gmt_modified, row_version, 
+    row_status, creator, operator, ext_att
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from small_mkt_res_dm_account_grouping_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from small_mkt_res_dm_account_grouping_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    insert into small_mkt_res_dm_account_grouping_detail (id, state_cycle_date, member_id, 
+      nick_name, sex, birth_date, 
+      pine_coin, Growth_value, mobile, 
+      email, shop_no, shop_name, 
+      biz_type, first_shop_date, last_shop_date, 
+      half_year_buy_time, one_year_buy_time, three_years_buy_time, 
+      his_buy_time, half_year_exchange_time, one_year_exchange_time, 
+      three_years_exchange_time, his_exchange_time, 
+      half_year_order_fee, one_year_order_fee, three_years_order_fee, 
+      his_order_fee, half_year_per_order_fee, one_year_per_order_fee, 
+      three_years_per_order_fee, his_per_order_fee, 
+      gmt_create, gmt_modified, row_version, 
+      row_status, creator, operator, 
+      ext_att)
+    values (#{id,jdbcType=INTEGER}, #{stateCycleDate,jdbcType=VARCHAR}, #{memberId,jdbcType=BIGINT}, 
+      #{nickName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthDate,jdbcType=VARCHAR}, 
+      #{pineCoin,jdbcType=INTEGER}, #{growthValue,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{shopNo,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, 
+      #{bizType,jdbcType=INTEGER}, #{firstShopDate,jdbcType=TIMESTAMP}, #{lastShopDate,jdbcType=TIMESTAMP}, 
+      #{halfYearBuyTime,jdbcType=INTEGER}, #{oneYearBuyTime,jdbcType=INTEGER}, #{threeYearsBuyTime,jdbcType=INTEGER}, 
+      #{hisBuyTime,jdbcType=INTEGER}, #{halfYearExchangeTime,jdbcType=INTEGER}, #{oneYearExchangeTime,jdbcType=INTEGER}, 
+      #{threeYearsExchangeTime,jdbcType=INTEGER}, #{hisExchangeTime,jdbcType=INTEGER}, 
+      #{halfYearOrderFee,jdbcType=INTEGER}, #{oneYearOrderFee,jdbcType=INTEGER}, #{threeYearsOrderFee,jdbcType=INTEGER}, 
+      #{hisOrderFee,jdbcType=INTEGER}, #{halfYearPerOrderFee,jdbcType=INTEGER}, #{oneYearPerOrderFee,jdbcType=INTEGER}, 
+      #{threeYearsPerOrderFee,jdbcType=INTEGER}, #{hisPerOrderFee,jdbcType=INTEGER}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{rowVersion,jdbcType=INTEGER}, 
+      #{rowStatus,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
+      #{extAtt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    insert into small_mkt_res_dm_account_grouping_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="stateCycleDate != null">
+        state_cycle_date,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthDate != null">
+        birth_date,
+      </if>
+      <if test="pineCoin != null">
+        pine_coin,
+      </if>
+      <if test="growthValue != null">
+        Growth_value,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="shopNo != null">
+        shop_no,
+      </if>
+      <if test="shopName != null">
+        shop_name,
+      </if>
+      <if test="bizType != null">
+        biz_type,
+      </if>
+      <if test="firstShopDate != null">
+        first_shop_date,
+      </if>
+      <if test="lastShopDate != null">
+        last_shop_date,
+      </if>
+      <if test="halfYearBuyTime != null">
+        half_year_buy_time,
+      </if>
+      <if test="oneYearBuyTime != null">
+        one_year_buy_time,
+      </if>
+      <if test="threeYearsBuyTime != null">
+        three_years_buy_time,
+      </if>
+      <if test="hisBuyTime != null">
+        his_buy_time,
+      </if>
+      <if test="halfYearExchangeTime != null">
+        half_year_exchange_time,
+      </if>
+      <if test="oneYearExchangeTime != null">
+        one_year_exchange_time,
+      </if>
+      <if test="threeYearsExchangeTime != null">
+        three_years_exchange_time,
+      </if>
+      <if test="hisExchangeTime != null">
+        his_exchange_time,
+      </if>
+      <if test="halfYearOrderFee != null">
+        half_year_order_fee,
+      </if>
+      <if test="oneYearOrderFee != null">
+        one_year_order_fee,
+      </if>
+      <if test="threeYearsOrderFee != null">
+        three_years_order_fee,
+      </if>
+      <if test="hisOrderFee != null">
+        his_order_fee,
+      </if>
+      <if test="halfYearPerOrderFee != null">
+        half_year_per_order_fee,
+      </if>
+      <if test="oneYearPerOrderFee != null">
+        one_year_per_order_fee,
+      </if>
+      <if test="threeYearsPerOrderFee != null">
+        three_years_per_order_fee,
+      </if>
+      <if test="hisPerOrderFee != null">
+        his_per_order_fee,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="rowVersion != null">
+        row_version,
+      </if>
+      <if test="rowStatus != null">
+        row_status,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="extAtt != null">
+        ext_att,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="stateCycleDate != null">
+        #{stateCycleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null">
+        #{birthDate,jdbcType=VARCHAR},
+      </if>
+      <if test="pineCoin != null">
+        #{pineCoin,jdbcType=INTEGER},
+      </if>
+      <if test="growthValue != null">
+        #{growthValue,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="shopNo != null">
+        #{shopNo,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="firstShopDate != null">
+        #{firstShopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastShopDate != null">
+        #{lastShopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="halfYearBuyTime != null">
+        #{halfYearBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearBuyTime != null">
+        #{oneYearBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsBuyTime != null">
+        #{threeYearsBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="hisBuyTime != null">
+        #{hisBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearExchangeTime != null">
+        #{halfYearExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearExchangeTime != null">
+        #{oneYearExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsExchangeTime != null">
+        #{threeYearsExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="hisExchangeTime != null">
+        #{hisExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearOrderFee != null">
+        #{halfYearOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearOrderFee != null">
+        #{oneYearOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsOrderFee != null">
+        #{threeYearsOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="hisOrderFee != null">
+        #{hisOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearPerOrderFee != null">
+        #{halfYearPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearPerOrderFee != null">
+        #{oneYearPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsPerOrderFee != null">
+        #{threeYearsPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="hisPerOrderFee != null">
+        #{hisPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowVersion != null">
+        #{rowVersion,jdbcType=INTEGER},
+      </if>
+      <if test="rowStatus != null">
+        #{rowStatus,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="extAtt != null">
+        #{extAtt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    update small_mkt_res_dm_account_grouping_detail
+    <set>
+      <if test="stateCycleDate != null">
+        state_cycle_date = #{stateCycleDate,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null">
+        birth_date = #{birthDate,jdbcType=VARCHAR},
+      </if>
+      <if test="pineCoin != null">
+        pine_coin = #{pineCoin,jdbcType=INTEGER},
+      </if>
+      <if test="growthValue != null">
+        Growth_value = #{growthValue,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="shopNo != null">
+        shop_no = #{shopNo,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null">
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        biz_type = #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="firstShopDate != null">
+        first_shop_date = #{firstShopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastShopDate != null">
+        last_shop_date = #{lastShopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="halfYearBuyTime != null">
+        half_year_buy_time = #{halfYearBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearBuyTime != null">
+        one_year_buy_time = #{oneYearBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsBuyTime != null">
+        three_years_buy_time = #{threeYearsBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="hisBuyTime != null">
+        his_buy_time = #{hisBuyTime,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearExchangeTime != null">
+        half_year_exchange_time = #{halfYearExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearExchangeTime != null">
+        one_year_exchange_time = #{oneYearExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsExchangeTime != null">
+        three_years_exchange_time = #{threeYearsExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="hisExchangeTime != null">
+        his_exchange_time = #{hisExchangeTime,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearOrderFee != null">
+        half_year_order_fee = #{halfYearOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearOrderFee != null">
+        one_year_order_fee = #{oneYearOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsOrderFee != null">
+        three_years_order_fee = #{threeYearsOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="hisOrderFee != null">
+        his_order_fee = #{hisOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="halfYearPerOrderFee != null">
+        half_year_per_order_fee = #{halfYearPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="oneYearPerOrderFee != null">
+        one_year_per_order_fee = #{oneYearPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="threeYearsPerOrderFee != null">
+        three_years_per_order_fee = #{threeYearsPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="hisPerOrderFee != null">
+        his_per_order_fee = #{hisPerOrderFee,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowVersion != null">
+        row_version = #{rowVersion,jdbcType=INTEGER},
+      </if>
+      <if test="rowStatus != null">
+        row_status = #{rowStatus,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="extAtt != null">
+        ext_att = #{extAtt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.songshu.snt.uic.DO.MktAccountGroupDetail">
+    update small_mkt_res_dm_account_grouping_detail
+    set state_cycle_date = #{stateCycleDate,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=BIGINT},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birth_date = #{birthDate,jdbcType=VARCHAR},
+      pine_coin = #{pineCoin,jdbcType=INTEGER},
+      Growth_value = #{growthValue,jdbcType=INTEGER},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      shop_no = #{shopNo,jdbcType=VARCHAR},
+      shop_name = #{shopName,jdbcType=VARCHAR},
+      biz_type = #{bizType,jdbcType=INTEGER},
+      first_shop_date = #{firstShopDate,jdbcType=TIMESTAMP},
+      last_shop_date = #{lastShopDate,jdbcType=TIMESTAMP},
+      half_year_buy_time = #{halfYearBuyTime,jdbcType=INTEGER},
+      one_year_buy_time = #{oneYearBuyTime,jdbcType=INTEGER},
+      three_years_buy_time = #{threeYearsBuyTime,jdbcType=INTEGER},
+      his_buy_time = #{hisBuyTime,jdbcType=INTEGER},
+      half_year_exchange_time = #{halfYearExchangeTime,jdbcType=INTEGER},
+      one_year_exchange_time = #{oneYearExchangeTime,jdbcType=INTEGER},
+      three_years_exchange_time = #{threeYearsExchangeTime,jdbcType=INTEGER},
+      his_exchange_time = #{hisExchangeTime,jdbcType=INTEGER},
+      half_year_order_fee = #{halfYearOrderFee,jdbcType=INTEGER},
+      one_year_order_fee = #{oneYearOrderFee,jdbcType=INTEGER},
+      three_years_order_fee = #{threeYearsOrderFee,jdbcType=INTEGER},
+      his_order_fee = #{hisOrderFee,jdbcType=INTEGER},
+      half_year_per_order_fee = #{halfYearPerOrderFee,jdbcType=INTEGER},
+      one_year_per_order_fee = #{oneYearPerOrderFee,jdbcType=INTEGER},
+      three_years_per_order_fee = #{threeYearsPerOrderFee,jdbcType=INTEGER},
+      his_per_order_fee = #{hisPerOrderFee,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      row_version = #{rowVersion,jdbcType=INTEGER},
+      row_status = #{rowStatus,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      ext_att = #{extAtt,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
