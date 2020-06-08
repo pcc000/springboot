@@ -30,6 +30,7 @@ public class Foo {
         printFirst.run();
     }
 
+
     public void second(Runnable printSecond) throws InterruptedException {
 
         // printSecond.run() outputs "second". Do not change or remove this line.
@@ -83,6 +84,7 @@ public class Foo {
                 lock.unlock();
             }
         }).start();
+
 
         new Thread(()->{
 //            while (second.get()!=1){

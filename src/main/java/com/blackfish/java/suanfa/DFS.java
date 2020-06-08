@@ -85,7 +85,40 @@ public class DFS {
     }
 
 
+    /**
+     * 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。
+     * 本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1。
+     * https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/
+     * @param nums
+     * @return
+     */
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if(nums.length==0) return null;
+        if(nums.length==1) return new TreeNode(nums[0]);
+        int center = nums.length/2;
+        TreeNode root = new TreeNode(nums[center]);
+        int[] left = new int[center];
+        int[] right = new int[nums.length-center-1];
+        int j=0;
+        for(int i=0;i<nums.length;i++){
+            if(i<center){
+                left[i] = nums[i];
+            }
+            if(i>center){
+                right[j++] = nums[i];
+            }
+        }
+        root.left = sortedArrayToBST(left);
+        root.right = sortedArrayToBST(right);
+        return root;
+    }
+
+
     public static void main(String[] args) {
+        int[] result = new int[]{};
+        System.out.println(result == null);
+        System.out.println(result.length);
+
         DFS dfs = new DFS();
         TreeNode root = new TreeNode(3);
         TreeNode rootLeft = new TreeNode(1);
@@ -99,6 +132,10 @@ public class DFS {
         System.out.println(dfs.isSymmetric(root));
 
         System.out.println(dfs.isValidBST(root));
+
+
+        int[] nums = new int[]{-10,-3,0,5,9};
+        System.out.println(dfs.sortedArrayToBST(nums));
     }
 
 }
