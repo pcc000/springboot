@@ -1,5 +1,10 @@
 package com.blackfish.java.suanfa;
 
+import sun.reflect.generics.tree.Tree;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Auther: shuyiwei
  * @Date: 2019/12/16 17:31
@@ -114,10 +119,40 @@ public class DFS {
     }
 
 
+    /**
+     * 给定一个整数 n，生成所有由 1 ... n 为节点所组成的 二叉搜索树 。
+     * https://leetcode-cn.com/problems/unique-binary-search-trees-ii/
+     * @param n
+     * @return
+     */
+    public List<TreeNode> generateTrees(int n) {
+        if(n<=0) return new ArrayList<>();
+        return generateTree(1,n);
+    }
+
+    private List<TreeNode> generateTree(int left,int right){
+        List<TreeNode> resultList = new ArrayList<>();
+        if(left > right){
+            resultList.add(null);
+            return resultList;
+        }
+        for(int i = left ; i<= right;i++){
+            List<TreeNode> leftTreeNodeList = generateTree(left,i-1);
+
+            List<TreeNode> rightTreeNodeList = generateTree(i+1,right);
+
+            for(TreeNode l : leftTreeNodeList){
+                for(TreeNode r : rightTreeNodeList){
+                    TreeNode root = new TreeNode(i,l,r);
+                    resultList.add(root);
+                }
+            }
+        }
+        return resultList;
+    }
+
+
     public static void main(String[] args) {
-        int[] result = new int[]{};
-        System.out.println(result == null);
-        System.out.println(result.length);
 
         DFS dfs = new DFS();
         TreeNode root = new TreeNode(3);
@@ -136,6 +171,9 @@ public class DFS {
 
         int[] nums = new int[]{-10,-3,0,5,9};
         System.out.println(dfs.sortedArrayToBST(nums));
+
+        List<TreeNode> treeNodeList = dfs.generateTrees(0);
+        System.out.println("treeNodeList size:"+treeNodeList.size());
     }
 
 }
@@ -144,8 +182,12 @@ class TreeNode{
      int val;
      TreeNode left;
      TreeNode right;
-     public TreeNode(int val) {
+     TreeNode(int val) {
         this.val = val;
     }
-
+     TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+     }
 }
