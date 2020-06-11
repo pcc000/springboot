@@ -20,7 +20,6 @@ public class AddTwoNumber {
             if(map.get(target-nums[i])!=null){
                 return new int[]{i,map.get(target-nums[i])};
             }
-            Set<Integer> setInteger = map.keySet();
             map.put(nums[i],i);
         }
         return new int[]{};
