@@ -10,6 +10,8 @@ import java.util.Set;
  */
 public class LongestConsecutive {
 
+    private String[] strs;
+
     /**
      * 给定一个未排序的整数数组，找出最长连续序列的长度。
      * 示例:
@@ -41,10 +43,53 @@ public class LongestConsecutive {
         return result;
     }
 
+
+    /**
+     * 编写一个函数来查找字符串数组中的最长公共前缀。
+     * 如果不存在公共前缀，返回空字符串 ""。
+     * 示例 1:
+     * 输入: ["flower","flow","flight"]
+     * 输出: "fl"
+     * 示例 2:
+     * 输入: ["dog","racecar","car"]
+     * 输出: ""
+     * 解释: 输入不存在公共前缀。
+     * 说明:
+     * 所有输入只包含小写字母 a-z 。
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/longest-common-prefix
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param strs
+     * @return
+     */
+    public String longestCommonPrefix(String[] strs) {
+        this.strs = strs;
+        if(strs.length==0) return "";
+        return result(strs.length-1);
+    }
+
+    private String result(int j){
+        if(j==0) return strs[0];
+        String before = result(j-1);
+        String result ="";
+        for(int k=0;k<strs[j].length();k++){
+            if(k<before.length() && before.charAt(k)==strs[j].charAt(k)){
+                result = result + before.charAt(k);
+            }else{
+                break;
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         LongestConsecutive longestConsecutive = new LongestConsecutive();
         int[] nums = new int[]{100, 4, 200, 1, 3, 2};
         System.out.println(longestConsecutive.longestConsecutive(nums));
+
+        String[] strs = new String[]{"","aa","aaa"};
+        System.out.println(longestConsecutive.longestCommonPrefix(strs));
+
     }
 
 }
