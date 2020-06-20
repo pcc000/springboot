@@ -16,11 +16,11 @@ public class Base {
         jedis.del("count");
 
         //hyperLoglog
-        for(int i=0;i<100000;i++){
-            jedis.pfadd("count","user"+i);
+        for(int i=0;i<100;i++){
+            jedis.pfadd("count","user");
         }
         long total = jedis.pfcount("count");
-        System.out.println("100000 ," + total);
+        System.out.println("100 ," + total);
         jedis.close();
     }
 
