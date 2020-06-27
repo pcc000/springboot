@@ -1,6 +1,8 @@
 package com.blackfish.java.suanfa;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -41,10 +43,54 @@ public class LongestConsecutive {
         return result;
     }
 
+    /**
+     * 编写一个函数来查找字符串数组中的最长公共前缀。
+     * 如果不存在公共前缀，返回空字符串 ""。
+     * 示例 1:
+     * 输入: ["flower","flow","flight"]
+     * 输出: "fl"
+     * 示例 2:
+     * 输入: ["dog","racecar","car"]
+     * 输出: ""
+     * 解释: 输入不存在公共前缀。
+     * 说明:
+     * 所有输入只包含小写字母 a-z 。
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/longest-common-prefix
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param strs
+     * @return
+     */
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length==0) return "";
+        if(strs.length==1) return strs[0];
+        String result ="";
+        List<String> first = new ArrayList<>();
+        for(int i=0;i<strs[0].length();i++){
+            System.out.println(strs[0].charAt(i));
+            first.add(String.valueOf(strs[0].charAt(i)));
+        }
+        for(String str : first){
+            String s ="";
+            for(int j=1;j<strs.length;j++){
+                if(strs[j].contains(str)){
+                    s = str;
+                }else{
+                    s ="";
+                    break;
+                }
+            }
+            result = result + s;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         LongestConsecutive longestConsecutive = new LongestConsecutive();
         int[] nums = new int[]{100, 4, 200, 1, 3, 2};
         System.out.println(longestConsecutive.longestConsecutive(nums));
+        String[] strs = new String[]{"flower","flow","flight"};
+        System.out.println(longestConsecutive.longestCommonPrefix(strs));
     }
 
 }

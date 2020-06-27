@@ -198,17 +198,17 @@
             <version>1.9.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.tiefan.infra.common</groupId>
-            <artifactId>lock-impl-redis</artifactId>
-            <version>0.1.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.tiefan.infra.common</groupId>-->
+            <!--<artifactId>lock-impl-redis</artifactId>-->
+            <!--<version>0.1.0</version>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>com.tiefan.infra.common</groupId>
-            <artifactId>lock-impl-zk</artifactId>
-            <version>0.1.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.tiefan.infra.common</groupId>-->
+            <!--<artifactId>lock-impl-zk</artifactId>-->
+            <!--<version>0.1.0</version>-->
+        <!--</dependency>-->
 
         <!--redis-->
         <dependency>
@@ -223,6 +223,13 @@
             <artifactId>spring-kafka</artifactId>
             <version>1.2.3.RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>4.6.1</version>
+        </dependency>
+
 
     </dependencies>
 

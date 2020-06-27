@@ -44,9 +44,10 @@ public class ArrayTest {
 
 
     public static void main(String[] args) {
-        ArrayTest arrayTest = new ArrayTest();
-        int[] nums = new int[]{1,2,3,4};
-        System.out.println(JsonUtil.toJson(arrayTest.productExceptSelf(nums)));
+        int[] nums = new int[Integer.MAX_VALUE];
+//        ArrayTest arrayTest = new ArrayTest();
+//        int[] nums = new int[]{1,2,3,4};
+//        System.out.println(JsonUtil.toJson(arrayTest.productExceptSelf(nums)));
     }
 
 }
