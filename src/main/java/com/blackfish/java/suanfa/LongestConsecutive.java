@@ -12,6 +12,8 @@ import java.util.Set;
  */
 public class LongestConsecutive {
 
+    private String[] strs;
+
     /**
      * 给定一个未排序的整数数组，找出最长连续序列的长度。
      * 示例:
@@ -43,6 +45,7 @@ public class LongestConsecutive {
         return result;
     }
 
+
     /**
      * 编写一个函数来查找字符串数组中的最长公共前缀。
      * 如果不存在公共前缀，返回空字符串 ""。
@@ -62,25 +65,21 @@ public class LongestConsecutive {
      * @return
      */
     public String longestCommonPrefix(String[] strs) {
+        this.strs = strs;
         if(strs.length==0) return "";
-        if(strs.length==1) return strs[0];
+        return result(strs.length-1);
+    }
+
+    private String result(int j){
+        if(j==0) return strs[0];
+        String before = result(j-1);
         String result ="";
-        List<String> first = new ArrayList<>();
-        for(int i=0;i<strs[0].length();i++){
-            System.out.println(strs[0].charAt(i));
-            first.add(String.valueOf(strs[0].charAt(i)));
-        }
-        for(String str : first){
-            String s ="";
-            for(int j=1;j<strs.length;j++){
-                if(strs[j].contains(str)){
-                    s = str;
-                }else{
-                    s ="";
-                    break;
-                }
+        for(int k=0;k<strs[j].length();k++){
+            if(k<before.length() && before.charAt(k)==strs[j].charAt(k)){
+                result = result + before.charAt(k);
+            }else{
+                break;
             }
-            result = result + s;
         }
         return result;
     }
@@ -89,8 +88,6 @@ public class LongestConsecutive {
         LongestConsecutive longestConsecutive = new LongestConsecutive();
         int[] nums = new int[]{100, 4, 200, 1, 3, 2};
         System.out.println(longestConsecutive.longestConsecutive(nums));
-        String[] strs = new String[]{"flower","flow","flight"};
-        System.out.println(longestConsecutive.longestCommonPrefix(strs));
     }
 
 }
