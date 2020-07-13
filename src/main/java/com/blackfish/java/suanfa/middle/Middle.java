@@ -128,6 +128,84 @@ public class Middle {
     }
 
 
+    /**
+     * 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+     *
+     * 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+     *
+     * 现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？
+     *
+     *
+     *
+     * 网格中的障碍物和空位置分别用 1 和 0 来表示。
+     *
+     * 说明：m 和 n 的值均不超过 100。
+     *
+     * 示例 1:
+     *
+     * 输入:
+     * [
+     *   [0,0,0],
+     *   [0,1,0],
+     *   [0,0,0]
+     * ]
+     * 输出: 2
+     * 解释:
+     * 3x3 网格的正中间有一个障碍物。
+     * 从左上角到右下角一共有 2 条不同的路径：
+     * 1. 向右 -> 向右 -> 向下 -> 向下
+     * 2. 向下 -> 向下 -> 向右 -> 向右
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/unique-paths-ii
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param obstacleGrid
+     * @return
+     */
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int[][] dynamicProgramCount = new int[obstacleGrid[0].length][obstacleGrid.length];
+        dynamicProgramCount[0][0]=1;
+        for(int i=0;i<obstacleGrid.length;i++){
+            for(int j=0;j<obstacleGrid[i].length;j++){
+
+            }
+        }
+        return 0;
+    }
+
+
+    /**
+     * 哦，不！你不小心把一个长篇文章中的空格、标点都删掉了，并且大写也弄成了小写。
+     * 像句子"I reset the computer. It still didn’t boot!"已经变成了"iresetthecomputeritstilldidntboot"。
+     * 在处理标点符号和大小写之前，你得先把它断成词语。当然了，你有一本厚厚的词典dictionary，不过，有些词没在词典里。
+     * 假设文章用sentence表示，设计一个算法，把文章断开，要求未识别的字符最少，返回未识别的字符数。
+     * 注意：本题相对原题稍作改动，只需返回未识别的字符数
+     *
+     * 示例：
+     *
+     * 输入：
+     * dictionary = ["looked","just","like","her","brother"]
+     * sentence = "jesslookedjustliketimherbrother"
+     * 输出： 7
+     * 解释： 断句后为"jess looked just like tim her brother"，共7个未识别字符。
+     * 提示：
+     *
+     * 0 <= len(sentence) <= 1000
+     * dictionary中总字符数不超过 150000。
+     * 你可以认为dictionary和sentence中只包含小写字母
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/re-space-lcci
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param dictionary
+     * @param sentence
+     * @return
+     */
+    public int respace(String[] dictionary, String sentence) {
+        return 0;
+    }
+
+
 
     public static void main(String[] args) {
         Middle middle = new Middle();
@@ -141,7 +219,12 @@ public class Middle {
         int[] A = new int[]{1,3,3,2,1};
         int[] B = new int[]{3,2,1,4,7};
 
-        System.out.println(middle.findLength(A,B));
+        int[][] s = new int[][]{{1,2,3,4},{1,2,3,5}};
+
+        System.out.println(s[0].length);
+        System.out.println(s.length);
+
+//        System.out.println(middle.findLength(A,B));
 
     }
 }
