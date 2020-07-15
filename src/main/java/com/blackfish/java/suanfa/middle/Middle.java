@@ -1,8 +1,10 @@
 package com.blackfish.java.suanfa.middle;
 
 import com.blackfish.java.util.common.JsonUtil;
+import sun.text.normalizer.Trie;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Auther: shuyiwei
@@ -175,6 +177,119 @@ public class Middle {
 
 
     /**
+     * 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
+     *
+     * 相邻的结点 在这里指的是 下标 与 上一层结点下标 相同或者等于 上一层结点下标 + 1 的两个结点。
+     *
+     *  
+     *
+     * 例如，给定三角形：
+     *
+     * [
+     *      [2],
+     *     [3,4],
+     *    [6,5,7],
+     *   [4,1,8,3]
+     * ]
+     * 自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。
+     * f[i][j] 标识到位置（i,j）的最小路径
+     * f[i][j] = min(f[i-1][j-1],f[i-1][j]) + c[i][j]
+     *  
+     *
+     * 说明：
+     *
+     * 如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/triangle
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     */
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int[][] f = new int[triangle.size()][triangle.size()];
+        f[0][0] = triangle.get(0).get(0);
+        for(int i=1;i<triangle.size();i++){
+            for(int j=0;j<triangle.get(i).size();j++){
+                if(j-1<0){
+                    f[i][j] = triangle.get(i).get(j) + f[i-1][j];
+                }else if(i==j){
+                    f[i][j] = triangle.get(i).get(j) + f[i-1][j-1];
+                }else{
+                    f[i][j] = triangle.get(i).get(j) + Math.min(f[i-1][j],f[i-1][j-1]);
+                }
+
+            }
+        }
+        int min = f[triangle.size()-1][0];
+        for(int i=1;i<f[triangle.size()-1].length;i++){
+            min = Math.min(min,f[triangle.size()-1][i]);
+        }
+        return min;
+    }
+
+    /**
+     * 给你一个由若干 0 和 1 组成的二维网格 grid，请你找出边界全部由 1 组成的最大 正方形 子网格，并返回该子网格中的元素数量。如果不存在，则返回 0。
+     *
+     *  
+     *
+     * 示例 1：
+     *
+     * 输入：grid = [[1,1,1],[1,0,1],[1,1,1]]
+     * 输出：9
+     * 示例 2：
+     *
+     * 输入：grid = [[1,1,0,0]]
+     * 输出：1
+     *
+     *  1 1 1 1
+     *  1 0 0 1
+     *  1 0 0 1
+     *  1 1 1 1
+     * 提示：
+     *
+     * 1 <= grid.length <= 100
+     * 1 <= grid[0].length <= 100
+     * grid[i][j] 为 0 或 1
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/largest-1-bordered-square
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     */
+    public int largest1BorderedSquare(int[][] grid) {
+        int maxLength = 0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[i].length;j++){
+                if(grid[i][j]==1){
+                    int currLength = maxLength;
+                    while(i+currLength < grid.length && j+currLength<grid[i].length){
+                        boolean leftFlag = true;
+                        for(int temp_i=i,temp_j=j;temp_i<i+currLength+1 && temp_j<j+currLength+1;temp_i++,temp_j++){
+                            if(grid[temp_i][j]==0 || grid[i][temp_j]==0){
+                                leftFlag = false;
+                                break;
+                            }
+                        }
+                        if(!leftFlag) break;
+
+                        boolean rightFlag = true;
+                        for(int temp_i = i+currLength,temp_j=j+currLength,_i=temp_i,_j=temp_j;temp_i>i && temp_j>j;temp_i--,temp_j--){
+                            if(grid[temp_i][_j]==0 || grid[_i][temp_j]==0){
+                                currLength++;
+                                rightFlag =false;
+                                break;
+                            }
+                        }
+                        if(!rightFlag) continue;
+                        maxLength = ++currLength;
+                    }
+                }
+            }
+        }
+        return maxLength * maxLength;
+    }
+
+
+
+    /**
      * 哦，不！你不小心把一个长篇文章中的空格、标点都删掉了，并且大写也弄成了小写。
      * 像句子"I reset the computer. It still didn’t boot!"已经变成了"iresetthecomputeritstilldidntboot"。
      * 在处理标点符号和大小写之前，你得先把它断成词语。当然了，你有一本厚厚的词典dictionary，不过，有些词没在词典里。
@@ -208,7 +323,22 @@ public class Middle {
 
 
     public static void main(String[] args) {
+
         Middle middle = new Middle();
+
+        int[][] grid = new int[][]{{1,1,1},{1,0,1},{1,1,1}};
+        System.out.println(middle.largest1BorderedSquare(grid));
+
+
+//        List<Integer> list1 = Arrays.asList(2);
+//        List<Integer> list2 = Arrays.asList(3,4);
+//        List<Integer> list3 = Arrays.asList(6,5,7);
+//        List<Integer> list4 = Arrays.asList(4,1,8,3);
+//        List<List<Integer>> numList = Arrays.asList(list1,list2,list3,list4);
+//        System.out.println(middle.minimumTotal(numList));
+
+
+
 //        int[] nums = new int[]{2,3,1,2,4,3};
 //        System.out.println(middle.minSubArrayLen(4,nums));
 //        int[] nums1 = new int[]{1,3,5,7,9,2,6};
@@ -216,13 +346,11 @@ public class Middle {
 //        System.out.println(JsonUtil.toJson(nums1));
 //        System.out.println(middle.findKthLargest(nums1,3));
 //        System.out.println(Arrays.binarySearch(nums1,6));
-        int[] A = new int[]{1,3,3,2,1};
-        int[] B = new int[]{3,2,1,4,7};
-
-        int[][] s = new int[][]{{1,2,3,4},{1,2,3,5}};
-
-        System.out.println(s[0].length);
-        System.out.println(s.length);
+//        int[] A = new int[]{1,3,3,2,1};
+//        int[] B = new int[]{3,2,1,4,7};
+//        int[][] s = new int[][]{{1,2,3,4},{1,2,3,5}};
+//        System.out.println(s[0].length);
+//        System.out.println(s.length);
 
 //        System.out.println(middle.findLength(A,B));
 
