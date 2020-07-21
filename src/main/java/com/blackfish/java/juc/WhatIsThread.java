@@ -39,7 +39,10 @@ public class WhatIsThread {
     }
 
 
+    //一个任务T  由N个子任务构成 每个子任务完成的时长不同  若其中一个子任务失败  所有任务结束 T任务结束
+
     public static void main(String[] args) throws Exception {
+        CompletableFuture futureT = CompletableFuture.supplyAsync(()->{System.out.println("123") ; return "123";}).thenAccept((result)-> System.exit(0));
 //        new T1().start();
 //        new Thread(new R1()).start();
 //

@@ -162,16 +162,96 @@ public class Simple {
         return result;
     }
 
+    /**
+     * 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+     *
+     * 你可以假设数组中无重复元素。
+     *
+     * 示例 1:
+     *
+     * 输入: [1,3,5,6], 5
+     * 输出: 2
+     * 示例 2:
+     *
+     * 输入: [1,3,5,6], 2
+     * 输出: 1
+     * 示例 3:
+     *
+     * 输入: [1,3,5,6], 7
+     * 输出: 4
+     * 示例 4:
+     *
+     * 输入: [1,3,5,6], 0
+     * 输出: 0
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/search-insert-position
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param nums
+     * @param target
+     */
+    public int searchInsert(int[] nums, int target) {
+        if(nums.length==0 || target<nums[0])return 0;
+        if(target>nums[nums.length-1])return nums.length;
+        for(int i=0;i<nums.length;i++){
+            if(i+1<nums.length && target>nums[i] && target<nums[i+1]) return i+1;
+            if(nums[i] == target) return i;
+        }
+        return 0;
+    }
+
+
+    /**
+     * 给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。
+     *
+     * 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。
+     *
+     * 说明:
+     *
+     * 返回的下标值（index1 和 index2）不是从零开始的。
+     * 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。
+     * 示例:
+     *
+     * 输入: numbers = [2, 7, 11, 15], target = 9
+     * 输出: [1,2]
+     * 解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param numbers
+     * @param target
+     * @return
+     */
+    public int[] twoSum(int[] numbers, int target) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<numbers.length;i++){
+            if(null != map.get(target-numbers[i])){
+                return new int[]{map.get(target-numbers[i]),i+1};
+            }
+            map.put(numbers[i],i+1);
+        }
+        return new int[]{};
+    }
+
     public static void main(String[] args) {
         Simple simple = new Simple();
 
-        int[] num1 = new int[]{4,9,5};
-        int[] num2 = new int[]{9,4,9,8,4};
+        int[] num1 = new int[]{1,3,5,6};
 
-        int[] reslt = simple.intersect(num1,num2);
-        for(int i=0;i<reslt.length;i++){
-            System.out.print(reslt[i]+" ");
+        int[] result = simple.twoSum(num1,4);
+
+        for(int i=0;i<result.length;i++){
+            System.out.println(result[i]);
         }
+
+        System.out.println(simple.searchInsert(num1,5));
+//        int[] num2 = new int[]{9,4,9,8,4};
+//
+//        int[] reslt = simple.intersect(num1,num2);
+//        for(int i=0;i<reslt.length;i++){
+//            System.out.print(reslt[i]+" ");
+//        }
 
 
 //        int[] nums = simple.divingBoard(2,2,3);
