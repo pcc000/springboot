@@ -23,7 +23,7 @@ public class Consumer {
 
         consumer.setNamesrvAddr("192.168.195.129:9876");
 
-        consumer.subscribe("myfirstTopic11","*");
+        consumer.subscribe("myfirstTopic22","*");
 
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
@@ -37,7 +37,7 @@ public class Consumer {
             }
         });
         //集群 和 广播模式
-        consumer.setMessageModel(MessageModel.BROADCASTING);
+        consumer.setMessageModel(MessageModel.CLUSTERING);
         consumer.start();
 
         System.out.println("end");

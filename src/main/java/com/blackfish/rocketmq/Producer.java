@@ -21,13 +21,13 @@ import java.util.List;
 public class Producer {
 
     public static void main(String[] args) throws MQClientException, RemotingException, InterruptedException, MQBrokerException {
-        DefaultMQProducer producer = new DefaultMQProducer("myGroup");
+        DefaultMQProducer producer = new DefaultMQProducer("pccGroup");
         producer.setNamesrvAddr("192.168.195.129:9876");
         producer.start();
 
-        Message message = new Message("myfirstTopic11","helllo world".getBytes());
+        Message message = new Message("myfirstTopic21","helllo world".getBytes());
 
-        Message message1 = new Message("myfirstTopic11","helllo1 world".getBytes());
+        Message message1 = new Message("myfirstTopic21","helllo1 world".getBytes());
         List<Message> lists = new ArrayList<>();
         lists.add(message);
         lists.add(message1);
