@@ -3,6 +3,7 @@ package com.blackfish.rocketmq;
 import java.io.*;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -32,7 +33,7 @@ public class MappedByteBufferTest {
         long start = System.currentTimeMillis();
         File file = new File("D://test/snt_toc.2020-07-22.log");
         long len = file.length();
-        final int BUFFER_SIZE = 3*1024*1024;// 3M的缓冲
+        final int BUFFER_SIZE = 1*1024;// 3M的缓冲
         byte[] ds = null;
 
 
@@ -68,12 +69,12 @@ public class MappedByteBufferTest {
 
 
 
-        BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream),BUFFER_SIZE);
-        String line = null;
-        while((line = bufferedReader.readLine())!=null){
-//            System.out.println(line);
-        }
+//        BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream),BUFFER_SIZE);
+//        String line = null;
+//        while((line = bufferedReader.readLine())!=null){
+////            System.out.println(line);
+//        }
         System.out.println("exect time:"+(System.currentTimeMillis()-start)+"ms");
     }
 }

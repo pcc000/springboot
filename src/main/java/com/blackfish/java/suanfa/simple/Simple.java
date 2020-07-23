@@ -234,18 +234,101 @@ public class Simple {
         return new int[]{};
     }
 
+    /**
+     * 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
+     * 输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。  
+     *
+     * 示例 1：
+     *
+     * 输入：[3,4,5,1,2]
+     * 输出：1
+     * 示例 2：
+     *
+     * 输入：[2,2,2,0,1]
+     * 输出：0
+     * 注意：本题与主站 154 题相同：https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param numbers
+     * @return
+     */
+    public int minArray(int[] numbers) {
+        if(numbers.length==1) return numbers[0];
+        for(int i=0;i<numbers.length-1;i++){
+            if(numbers[i+1]<numbers[i]){
+                return numbers[i+1];
+            }
+        }
+        return numbers[0];
+
+//        for(int i=0;i<numbers.length;i++){
+//            if(numbers[i]<numbers[0]){
+//                return numbers[i];
+//            }
+//        }
+//        return numbers[0];
+    }
+
+    /**
+     * 给定两个二叉树，编写一个函数来检验它们是否相同。
+     *
+     * 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
+     *
+     * 示例 1:
+     *
+     * 输入:       1         1
+     *           / \       / \
+     *          2   3     2   3
+     *
+     *         [1,2,3],   [1,2,3]
+     *
+     * 输出: true
+     * 示例 2:
+     *
+     * 输入:      1          1
+     *           /           \
+     *          2             2
+     *
+     *         [1,2],     [1,null,2]
+     *
+     * 输出: false
+     * 示例 3:
+     *
+     * 输入:       1         1
+     *           / \       / \
+     *          2   1     1   2
+     *
+     *         [1,2,1],   [1,1,2]
+     *
+     * 输出: false
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/same-tree
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param p
+     * @param q
+     * @return
+     */
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(null==p && q==null) return true;
+        if((null!=p && q==null) || (null!=q && p==null)) return false;
+        if(p.val!=q.val) return false;
+        return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+    }
+
     public static void main(String[] args) {
         Simple simple = new Simple();
 
-        int[] num1 = new int[]{1,3,5,6};
+//        int[] num1 = new int[]{2,2,3,5,6};
+//
+//        System.out.println(simple.minArray(num1));
 
-        int[] result = simple.twoSum(num1,4);
+//        int[] result = simple.twoSum(num1,4);
+//
+//        for(int i=0;i<result.length;i++){
+//            System.out.println(result[i]);
+//        }
 
-        for(int i=0;i<result.length;i++){
-            System.out.println(result[i]);
-        }
-
-        System.out.println(simple.searchInsert(num1,5));
+//        System.out.println(simple.searchInsert(num1,5));
 //        int[] num2 = new int[]{9,4,9,8,4};
 //
 //        int[] reslt = simple.intersect(num1,num2);
@@ -280,13 +363,15 @@ public class Simple {
 //        TreeNode right3 = new TreeNode(1);
 //
 //        right2.right = right3;
-        TreeNode root = new TreeNode(1);
-        TreeNode left = new TreeNode(2);
+        TreeNode root = new TreeNode(2);
+        TreeNode left = new TreeNode(1);
+        TreeNode right = new TreeNode(3);
         root.left=left;
+        root.right=right;
 
 
 
-        System.out.println(simple.hasPathSum(root,1));
+        System.out.println(simple.isSameTree(root,root));
 
 
     }
