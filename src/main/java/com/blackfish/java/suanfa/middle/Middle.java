@@ -361,12 +361,103 @@ public class Middle {
         return dp[grid.length-1][grid[0].length-1];
     }
 
+    /**
+     * 给定一个二维的矩阵，包含 'X' 和 'O'（字母 O）。
+     *
+     * 找到所有被 'X' 围绕的区域，并将这些区域里所有的 'O' 用 'X' 填充。
+     *
+     * 示例:
+     *
+     * X X X X
+     * X O O X
+     * X X O X
+     * X O X X
+     * 运行你的函数后，矩阵变为：
+     *
+     * X X X X
+     * X X X X
+     * X X X X
+     * X O X X
+     * 解释:
+     *
+     * 被围绕的区间不会存在于边界上，换句话说，任何边界上的 'O' 都不会被填充为 'X'。 任何不在边界上，或不与边界上的 'O' 相连的 'O' 最终都会被填充为 'X'。如果两个元素在水平或垂直方向相邻，则称它们是“相连”的。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/surrounded-regions
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param board
+     */
+    public void solve(char[][] board) {
+        int[][] result = new int[board.length][board[0].length];
+    }
+
+
+    /**
+     * 给定一个表示分数的非负整数数组。 玩家 1 从数组任意一端拿取一个分数，随后玩家 2 继续从剩余数组任意一端拿取分数，然后玩家 1 拿，…… 。每次一个玩家只能拿取一个分数，分数被拿取之后不再可取。直         到没有剩余分数可取时游戏结束。最终获得分数总和最多的玩家获胜。
+     *
+     * 给定一个表示分数的数组，预测玩家1是否会成为赢家。你可以假设每个玩家的玩法都会使他的分数最大化。
+     *
+     *  
+     *
+     * 示例 1：
+     *
+     * 输入：[1, 5, 2]
+     * 输出：False
+     * 解释：一开始，玩家1可以从1和2中进行选择。
+     * 如果他选择 2（或者 1 ），那么玩家 2 可以从 1（或者 2 ）和 5 中进行选择。如果玩家 2 选择了 5 ，那么玩家 1 则只剩下 1（或者 2 ）可选。
+     * 所以，玩家 1 的最终分数为 1 + 2 = 3，而玩家 2 为 5 。
+     * 因此，玩家 1 永远不会成为赢家，返回 False 。
+     * 示例 2：
+     *
+     * 输入：[1, 5, 233, 7]
+     * 输出：True
+     * 解释：玩家 1 一开始选择 1 。然后玩家 2 必须从 5 和 7 中进行选择。无论玩家 2 选择了哪个，玩家 1 都可以选择 233 。
+     *      最终，玩家 1（234 分）比玩家 2（12 分）获得更多的分数，所以返回 True，表示玩家 1 可以成为赢家。
+     *  
+     *
+     * 提示：
+     *
+     * 1 <= 给定的数组长度 <= 20.
+     * 数组里所有分数都为非负数且不会大于 10000000 。
+     * 如果最终两个玩家的分数相等，那么玩家 1 仍为赢家。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/predict-the-winner
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param nums
+     * @return
+     */
+    public boolean PredictTheWinner(int[] nums) {
+        if(nums.length==1){
+            return true;
+        }
+        int start=0,end=nums.length-1,aSum=0,bSum=0,i=1;
+        while(start<nums.length && end>=0){
+            int max = nums[start]>nums[end] ? nums[start] : nums[end];
+            if(i%2==1) aSum=aSum+max;
+            if(i%2==0) bSum=bSum+max;
+            i++;
+            if(nums[start]>nums[end]){
+                start++;
+            }else{
+                end--;
+            }
+        }
+        if(aSum>=bSum){
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
 
+        int[] nums = new int[]{1,5,233,7};
         Middle middle = new Middle();
 
-        int[][] grid = new int[][]{{1}};
-        System.out.println(middle.minPathSum(grid));
+        System.out.println(middle.PredictTheWinner(nums));
+//
+//        int[][] grid = new int[][]{{1}};
+//        System.out.println(middle.minPathSum(grid));
 
 
 //        List<Integer> list1 = Arrays.asList(2);

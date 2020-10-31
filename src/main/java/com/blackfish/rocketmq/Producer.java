@@ -25,9 +25,9 @@ public class Producer {
         producer.setNamesrvAddr("192.168.195.129:9876");
         producer.start();
 
-        Message message = new Message("myfirstTopic21","helllo world".getBytes());
+        Message message = new Message("pccTopic0724","pccTag1","05","helllo world".getBytes());
 
-        Message message1 = new Message("myfirstTopic21","helllo1 world".getBytes());
+        Message message1 = new Message("pccTopic0724","pccTag1","06","helllo1 world".getBytes());
         List<Message> lists = new ArrayList<>();
         lists.add(message);
         lists.add(message1);
@@ -51,10 +51,10 @@ public class Producer {
 //        producer.shutdown();
 
         //单向发送
-        producer.sendOneway(message);
+//        producer.sendOneway(message);
 
         //tag用来过滤消息  消息分组
-
+        producer.shutdown();
         System.out.println("Producer end");
 
     }

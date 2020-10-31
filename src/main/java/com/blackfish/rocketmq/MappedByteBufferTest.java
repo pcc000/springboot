@@ -32,6 +32,7 @@ public class MappedByteBufferTest {
 
         long start = System.currentTimeMillis();
         File file = new File("D://test/snt_toc.2020-07-22.log");
+//        File file = new File("D:\\test\\commitLog\\00000000000000000000");
         long len = file.length();
         final int BUFFER_SIZE = 1*1024;// 3M的缓冲
         byte[] ds = null;
@@ -41,6 +42,19 @@ public class MappedByteBufferTest {
             MappedByteBuffer mappedByteBuffer = new RandomAccessFile(file, "r")
                     .getChannel()
                     .map(FileChannel.MapMode.READ_ONLY, 0, len);
+//            for(int offset = 273938 ; offset<273938+187;offset++){
+//                int i=0;
+//                ds = new byte[187];
+//                ds[i] = mappedByteBuffer.get(offset + i);
+//                i++;
+//            }
+//            Scanner scan = new Scanner(new ByteArrayInputStream(ds))
+//                        .useDelimiter(" ");
+//                while (scan.hasNext()) {
+//                    // 这里为对读取文本解析的方法
+//                    System.out.print(scan.next() + " ");
+//                }
+//                scan.close();
             for (int offset = 0; offset < len; offset += BUFFER_SIZE) {
 
                 if (len - offset >= BUFFER_SIZE) {
