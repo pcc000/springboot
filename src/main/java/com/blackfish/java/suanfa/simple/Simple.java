@@ -1,9 +1,6 @@
 package com.blackfish.java.suanfa.simple;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Auther: shuyiwei
@@ -443,11 +440,65 @@ public class Simple {
         return result;
     }
 
+    /**
+     * 给定两个数组，编写一个函数来计算它们的交集。
+     * 示例 1：
+     *
+     * 输入：nums1 = [1,2,2,1], nums2 = [2,2]
+     * 输出：[2]
+     * 示例 2：
+     *
+     * 输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+     * 输出：[9,4]
+     *  
+     *
+     * 说明：
+     *
+     * 输出结果中的每个元素一定是唯一的。
+     * 我们可以不考虑输出结果的顺序。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public static int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> set = new HashSet<>();
+        for(int i=0;i<nums1.length;i++){
+            set.add(nums1[i]);
+        }
+        Set<Integer> resultSet = new HashSet<>();
+        for(int j=0;j<nums2.length;j++){
+            if(set.contains(nums2[j]) && !resultSet.contains(nums2[j])){
+                resultSet.add(nums2[j]);
+            }
+        }
+        int[] result = new int[resultSet.size()];
+        int i=0;
+        for(Integer s : resultSet){
+            result[i++] = s;
+        }
+        return result;
+    }
+
+    public static String printArray(int[] temp){
+        StringBuffer stringBuffer = new StringBuffer();
+        for(int i=0;i<temp.length;i++){
+            stringBuffer.append(temp[i]).append(",");
+        }
+        return stringBuffer.toString();
+    }
+
 
     public static void main(String[] args) {
         Simple simple = new Simple();
 
-        System.out.println(simple.countBinarySubstrings("001101"));
+//        System.out.println(simple.countBinarySubstrings("001101"));
+        int[] nums1 = new int[]{4,9,5};
+        int[] nums2 = new int[]{9,4,9,8,4};
+        System.out.println(printArray(Simple.intersection(nums1,nums2)));
 
 //        int[] num1 = new int[]{2,2,3,5,6};
 //
