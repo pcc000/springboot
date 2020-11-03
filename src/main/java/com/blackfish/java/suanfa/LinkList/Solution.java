@@ -262,24 +262,14 @@ public class Solution {
         while(null != l1Cur && null != l2Cur){
             if(l2Cur.val < l1Cur.val ){
                 cur.next = l2Cur;
-                cur = l2Cur;
                 l2Cur = l2Cur.next;
             }else{
                 cur.next = l1Cur;
-                cur = l1Cur;
                 l1Cur = l1Cur.next;
             }
+            cur = cur.next;
         }
-        while(null != l1Cur){
-            cur.next = l1Cur;
-            cur = l1Cur;
-            l1Cur = l1Cur.next;
-        }
-        while(null != l2Cur){
-            cur.next = l2Cur;
-            cur = l2Cur;
-            l2Cur = l2Cur.next;
-        }
+        cur.next = l1Cur != null ? l1Cur : l2Cur;
         return head.next;
     }
 
