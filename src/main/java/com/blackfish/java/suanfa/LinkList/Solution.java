@@ -232,8 +232,14 @@ public class Solution {
      * @param k
      * @return
      */
-    public ListNode getKthFromEnd(ListNode head, int k) {
-        return null;
+    public static ListNode getKthFromEnd(ListNode head, int k) {
+        ListNode first = head,second = head;
+        while(k-->0) first = first.next;
+        while(null != first){
+            first = first.next;
+            second =second.next;
+        }
+        return second;
     }
 
     /**
@@ -273,7 +279,6 @@ public class Solution {
         return head.next;
     }
 
-
     public static void main(String[] args) {
         ListNode root = new ListNode(1);
         ListNode s1 = new ListNode(2);
@@ -292,11 +297,12 @@ public class Solution {
         s21.next=s31;
 
         System.out.println("==========param:");
-        printListNode(root);
         printListNode(root1);
-        printListNode(mergeTwoLists(root1,root));
+        printListNode(getKthFromEnd(root1,2));
         System.out.println("==========result:");
 //        printListNode(deleteDuplicates(root));
+
+
     }
 
     public static void  printListNode(ListNode root){

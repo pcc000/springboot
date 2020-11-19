@@ -483,6 +483,73 @@ public class Simple {
         return result;
     }
 
+    /**
+     * 给定一个整数数组 A，如果它是有效的山脉数组就返回 true，否则返回 false。
+     *
+     * 让我们回顾一下，如果 A 满足下述条件，那么它是一个山脉数组：
+     *
+     * A.length >= 3
+     * 在 0 < i < A.length - 1 条件下，存在 i 使得：
+     * A[0] < A[1] < ... A[i-1] < A[i]
+     * A[i] > A[i+1] > ... > A[A.length - 1]
+     *
+     * 示例 1：
+     *
+     * 输入：[2,1]
+     * 输出：false
+     * 示例 2：
+     *
+     * 输入：[3,5,5]
+     * 输出：false
+     * 示例 3：
+     *
+     * 输入：[0,3,2,1]
+     * 输出：true
+     * 提示：
+     * 0 <= A.length <= 10000
+     * 0 <= A[i] <= 10000 
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/valid-mountain-array
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param A
+     * @return
+     */
+    public static boolean validMountainArray(int[] A) {
+        if(A.length<3) return false;
+        int high=-1;
+        for(int i=1;i<A.length-1;i++){
+            if(A[i]>A[i-1] && A[i]>A[i+1]){
+                high=i;
+                break;
+            }
+        }
+        if(high==-1) return false;
+        for(int i=1;i<high;i++){
+            if(A[i]<=A[i-1]){
+                return false;
+            }
+        }
+        for(int i=high;i<A.length-1;i++){
+            if(A[i]<=A[i+1]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean validMountainArray1(int[] A) {
+        int L = A.length;
+        int i=0;
+        while(i<L-1 && A[i]<A[i+1]){
+            i++;
+        }
+        if(i==0 || i==L-1) return false;
+        while(i<L-1 && A[i]>A[i+1]){
+            i++;
+        }
+        return L-1==i;
+    }
+
     public static String printArray(int[] temp){
         StringBuffer stringBuffer = new StringBuffer();
         for(int i=0;i<temp.length;i++){
