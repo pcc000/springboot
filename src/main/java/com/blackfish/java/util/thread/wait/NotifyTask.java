@@ -22,7 +22,7 @@ public class NotifyTask implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            o.notify();
+            o.notifyAll();
             System.out.println("notify after");
         }
     }
