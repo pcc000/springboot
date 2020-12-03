@@ -2,6 +2,7 @@ package com.blackfish.java.suanfa.LinkList;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 /**
  * @Auther: shuyiwei
@@ -137,12 +138,21 @@ public class Middle {
      */
     public static Node1 flatten(Node1 head) {
         if(null == head) return null;
-        Node1 cur = head;
-        while(null != cur){
-            cur = mergeChild(head);
-            cur = cur.next;
-        }
-        return head;
+        Node1 preHead = new Node1(0);
+        preHead.next = head;
+        getTail(preHead,head);
+        preHead.next.prev = null;
+        return preHead.next;
+    }
+
+    public static Node1 getTail(Node1 pre,Node1 cur){
+        if(null == cur) return pre;
+        cur.prev = pre;
+        pre.next = cur;
+        Node1 nextTemp = cur.next;
+        Node1 tail = getTail(cur,cur.child);
+        cur.child = null;
+        return getTail(tail,nextTemp);
     }
 
     public static Node1 mergeChild(Node1 node){
@@ -165,6 +175,15 @@ public class Middle {
     }
 
 
+    public static Node1 getChildNode(Node1 node){
+        Node1 head = null;
+        if(null != node.child){
+            head = node.child;
+        }
+        return head;
+    }
+
+
     public static void printNode1(Node1 head){
         StringBuffer result = new StringBuffer();
         while(null != head){
@@ -172,6 +191,179 @@ public class Middle {
             head = head.next;
         }
         System.out.println(result.toString());
+    }
+
+    /**
+     * 给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
+     *
+     * 示例 1:
+     *
+     * 输入: 1->2->3->4->5->NULL, k = 2
+     * 输出: 4->5->1->2->3->NULL
+     * 解释:
+     * 向右旋转 1 步: 5->1->2->3->4->NULL
+     * 向右旋转 2 步: 4->5->1->2->3->NULL
+     * 示例 2:
+     *
+     * 输入: 0->1->2->NULL, k = 4
+     * 输出: 2->0->1->NULL
+     * 解释:
+     * 向右旋转 1 步: 2->0->1->NULL
+     * 向右旋转 2 步: 1->2->0->NULL
+     * 向右旋转 3 步: 0->1->2->NULL
+     * 向右旋转 4 步: 2->0->1->NULL
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/rotate-list
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param head
+     * @param k
+     * @return
+     */
+    public static ListNode rotateRight(ListNode head, int k) {
+        if(null == head) return head;
+        if(null == head.next) return head;
+        ListNode cur = head;
+        int count =1;
+        while(null != cur.next){
+            count++;
+            cur = cur.next;
+        }
+        cur.next = head;
+        int move = count-k%count;
+
+        ListNode tail = head;
+        while(move!=1){
+            move--;
+            tail = tail.next;
+
+        }
+        ListNode newHead = tail.next;
+        tail.next=null;
+        return newHead;
+    }
+
+    /**
+     * 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+     * 示例：
+     *
+     * 输入：1->2->4, 1->3->4
+     * 输出：1->1->2->3->4->4
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/merge-two-sorted-lists
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode headTemp = new ListNode(0);
+        ListNode cur = headTemp;
+        while(null != l1 && null != l2){
+            if(l1.val<l2.val){
+                cur.next = l1;
+                l1 = l1.next;
+            }else{
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+        cur.next = null!=l1 ? l1 : l2;
+        return headTemp.next;
+    }
+
+    /**
+     * 给你两个 非空 链表来代表两个非负整数。数字最高位位于链表开始位置。它们的每个节点只存储一位数字。将这两数相加会返回一个新的链表。
+     *
+     * 你可以假设除了数字 0 之外，这两个数字都不会以零开头。
+     * 进阶：
+     * 如果输入链表不能修改该如何处理？换句话说，你不能对列表中的节点进行翻转。
+     * 示例：
+     * 输入：(7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
+     * 输出：7 -> 8 -> 0 -> 7
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/add-two-numbers-ii
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public  static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if(null == l1) return l2;
+        if(null == l2) return l1;
+        Stack<ListNode> s1 = new Stack<>();
+        Stack<ListNode> s2 = new Stack<>();
+        while(null != l1){
+            s1.add(l1);
+            l1 = l1.next;
+        }
+        while(null != l2){
+            s2.add(l2);
+            l2 = l2.next;
+        }
+        Stack<ListNode> resultStack = new Stack<>();
+        int in =0;
+        while(!s1.isEmpty() && !s2.isEmpty()){
+            int v1 = s1.pop().val,v2 = s2.pop().val;
+            resultStack.add(new ListNode((v1+v2+in)<=9 ? v1+v2+in : v1+v2+in-10));
+            in = (v1+v2+in)<=9 ? 0 : 1;
+        }
+        while (!s1.isEmpty()){
+            ListNode temp = s1.pop();
+            resultStack.add(new ListNode(temp.val+in<=9 ? temp.val+in : temp.val+in-10));
+            in= temp.val+in<=9 ? 0: 1;
+        }
+        while (!s2.isEmpty()){
+            ListNode temp = s2.pop();
+            resultStack.add(new ListNode(temp.val+in<=9 ? temp.val+in : temp.val+in-10));
+            in= temp.val+in<=9 ? 0: 1;
+        }
+        if(in ==1){
+            resultStack.add(new ListNode(1));
+        }
+        ListNode resultHeadTemp  = new ListNode(-1);
+        ListNode cur = resultHeadTemp;
+        while (!resultStack.isEmpty()){
+            cur.next = resultStack.pop();
+            cur = cur.next;
+        }
+        return resultHeadTemp.next;
+    }
+
+
+    public  static ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
+        if(null == l1) return l2;
+        if(null == l2) return l1;
+        long vaule1 =0;
+        while(null != l1){
+            vaule1 = vaule1*10 +  l1.val;
+            l1 = l1.next;
+        }
+        long vaule2 =0;
+        while(null != l2){
+            vaule2 = vaule2*10 +  l2.val;
+            l2 = l2.next;
+        }
+        Long resultValue = vaule1 + vaule2;
+        if(resultValue==0){
+            return new ListNode(0);
+        }
+        Stack<ListNode> stack = new Stack<>();
+        while(resultValue >0){
+            Long temp = resultValue%10;
+            stack.push(new ListNode(temp.intValue()));
+            resultValue = resultValue/10;
+        }
+
+        ListNode head = stack.pop();
+        ListNode cur = head;
+        while(!stack.isEmpty()){
+            cur.next=stack.pop();
+            cur = cur.next;
+        }
+        return head;
     }
 
 
@@ -185,25 +377,65 @@ public class Middle {
         System.out.println(result.toString());
     }
 
-    public static void main(String[] args) {
-        Node1 node1 = new Node1(1);
-        Node1 node2 = new Node1(2);
-        Node1 node3 = new Node1(3);
-        Node1 node4 = new Node1(4);
-        Node1 node5 = new Node1(5);
-        Node1 node6 = new Node1(6);
-        node1.next = node6;
-        node5.prev = node1;
-        node1.child = node2;
-        node2.next = node3;
-        node3.prev = node2;
-        node3.next = node5;
-        node5.prev = node3;
-        node3.child = node4;
+    public static void printListNode(ListNode head){
+        StringBuffer result = new StringBuffer();
+        while(null != head){
+            result.append(head.val).append(",");
+            head = head.next;
+        }
+        System.out.println(result.toString());
+    }
 
-//        Node1 result = flatten(node1);
-        Node1 result = mergeChild(node1);
-        printNode1(result);
+    public static void main(String[] args) {
+
+        ListNode node1 = new ListNode(5);
+//        ListNode node2 = new ListNode(1);
+//        ListNode node3 = new ListNode(3);
+//        node1.next=node2;
+//        node2.next=node3;
+        ListNode node4 = new ListNode(5);
+        ListNode node5 = new ListNode(9);
+        ListNode node6 = new ListNode(9);
+        ListNode node7 = new ListNode(9);
+        ListNode node8 = new ListNode(9);
+        ListNode node9 = new ListNode(9);
+        ListNode node10 = new ListNode(9);
+        ListNode node11 = new ListNode(9);
+        ListNode node12 = new ListNode(9);
+        ListNode node13 = new ListNode(9);
+//        node4.next=node5;
+//        node5.next=node6;
+//        node6.next=node7;
+//        node7.next=node8;
+//        node8.next=node9;
+//        node9.next=node10;
+//        node10.next=node11;
+//        node11.next=node12;
+//        node12.next=node13;
+
+        printListNode(node1);
+        printListNode(node4);
+        printListNode(addTwoNumbers(node1,node4));
+
+
+//        Node1 node1 = new Node1(1);
+//        Node1 node2 = new Node1(2);
+//        Node1 node3 = new Node1(3);
+//        Node1 node4 = new Node1(4);
+//        Node1 node5 = new Node1(5);
+//        Node1 node6 = new Node1(6);
+//        node1.next = node6;
+//        node5.prev = node1;
+//        node1.child = node2;
+//        node2.next = node3;
+//        node3.prev = node2;
+//        node3.next = node5;
+//        node5.prev = node3;
+//        node3.child = node4;
+//
+////        Node1 result = flatten(node1);
+//        Node1 result = mergeChild(node1);
+//        printNode1(result);
 
 //        Node node1 = new Node(7);
 //        Node node2 = new Node(13);
