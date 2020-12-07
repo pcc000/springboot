@@ -380,7 +380,26 @@ public class Middle {
      * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      * @param head
      */
-    public void reorderList(ListNode head) {
+    public static void reorderList(ListNode head) {
+
+        ListNode mid = getMide(head);
+        ListNode l1 = head;
+        ListNode l2 = mid.next;
+        mid.next = null;
+        l2 = reverse(l2);
+
+        while(null != l1 && null !=l2){
+            ListNode l1next = l1.next;
+            ListNode l2Next = l2.next;
+            l1.next = l2;
+            l2.next = l1next;
+            l1 = l1next;
+            l2 = l2Next;
+        }
+
+    }
+
+    public static void reorderList1(ListNode head) {
         int count =0;
         ListNode cur = head;
         while(null != cur){
@@ -390,17 +409,60 @@ public class Middle {
 
         Stack<ListNode> reverse = new Stack<>();
         count = count/2;
+        int i =count;
         cur = head;
-        while(count!=0){
-            count --;
+        while(i!=0){
+            i --;
             cur = cur.next;
         }
         while(null != cur){
             reverse.add(cur);
             cur = cur.next;
         }
-        
+        cur = head;
+        while(!reverse.isEmpty() && count>0){
+            count --;
+            ListNode temp = reverse.pop();
+            temp.next =  cur.next;
+            cur.next = temp;
+            if(count==0){
+                temp.next= reverse.isEmpty() ? null : reverse.pop();
+                if(null !=temp.next)temp.next.next=null;
 
+            }
+            cur = cur.next.next;
+        }
+    }
+
+    /**
+     * 反转链表
+     * @param head
+     * @return
+     */
+    public static ListNode reverse(ListNode head){
+        ListNode cur = head;
+        ListNode pre = null;
+        while(cur != null){
+            ListNode temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
+    }
+
+    /**
+     * 获取链表中间位置
+     * @param head
+     * @return
+     */
+    public static ListNode getMide(ListNode head){
+        ListNode fast = head,slow = head;
+        while(fast.next != null && fast.next.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
     }
 
 
@@ -425,12 +487,22 @@ public class Middle {
 
     public static void main(String[] args) {
 
-        ListNode node1 = new ListNode(5);
-//        ListNode node2 = new ListNode(1);
-//        ListNode node3 = new ListNode(3);
-//        node1.next=node2;
-//        node2.next=node3;
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
         ListNode node4 = new ListNode(5);
+        node1.next=node2;
+        node2.next=node3;
+        node3.next=node4;
+        printListNode(node1);
+        reorderList(node1);
+
+
+        printListNode(node1);
+
+
+
+
         ListNode node5 = new ListNode(9);
         ListNode node6 = new ListNode(9);
         ListNode node7 = new ListNode(9);
@@ -450,9 +522,9 @@ public class Middle {
 //        node11.next=node12;
 //        node12.next=node13;
 
-        printListNode(node1);
-        printListNode(node4);
-        printListNode(addTwoNumbers(node1,node4));
+//        printListNode(node1);
+//        printListNode(node4);
+//        printListNode(addTwoNumbers(node1,node4));
 
 
 //        Node1 node1 = new Node1(1);
