@@ -21,33 +21,33 @@ import java.util.stream.Collectors;
 public class MapTest {
 
     public static void main(String[] args) {
-        Student s1 = new Student();
-        s1.setName("123");
-        s1.setAge(12321);
-        Student s2 = new Student();
-        s2.setName("123");
-        s2.setAge(222);
-        List<Student> list = new ArrayList<>();
-        list.add(s1);
-        list.add(s2);
-
-        Map<String,List<Student>> map = list.stream().collect(Collectors.groupingBy(Student::getName));
-        System.out.println(JsonUtil.toMap(map));
-
-        FutureTask<Integer> integerFutureTask = new FutureTask<>(new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                return null;
-            }
-        });
-
-        Integer result = null ;
-
-        FutureTask<Integer> integer1FutureTask = new FutureTask<>(new Runnable(){
-            @Override
-            public void run() {
-
-            }
-        },result);
+//        Student s1 = new Student();
+//        s1.setName("123");
+//        s1.setAge(12321);
+//        Student s2 = new Student();
+//        s2.setName("123");
+//        s2.setAge(222);
+//        List<Student> list = new ArrayList<>();
+//        list.add(s1);
+//        list.add(s2);
+//
+//        Map<String,List<Student>> map = list.stream().collect(Collectors.groupingBy(Student::getName));
+//        System.out.println(JsonUtil.toMap(map));
+//
+//        FutureTask<Integer> integerFutureTask = new FutureTask<>(new Callable<Integer>() {
+//            @Override
+//            public Integer call() throws Exception {
+//                return null;
+//            }
+//        });
+//
+//        Integer result = null ;
+//
+//        FutureTask<Integer> integer1FutureTask = new FutureTask<>(new Runnable(){
+//            @Override
+//            public void run() {
+//
+//            }
+//        },result);
     }
 }

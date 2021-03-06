@@ -12,6 +12,7 @@ public class Test {
 
     public static void main(String arg[]){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean/propertyedit/propertyedit.xml");
+        System.out.println("=======================");
         System.out.println(applicationContext.getBean("test"));
     }
 }

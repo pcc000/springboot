@@ -9,7 +9,27 @@ import java.util.Date;
  */
 public class User {
 
+    private String name;
+
     private Date brithDay;
+
+    private Address address;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Date getBrithDay() {
         return brithDay;
@@ -22,7 +42,9 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "brithDay=" + brithDay +
+                "name='" + name + '\'' +
+                ", brithDay=" + brithDay +
+                ", address=" + address +
                 '}';
     }
 }

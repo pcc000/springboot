@@ -16,12 +16,15 @@
             <property name="propertyEditorRegistrars">
                   <list>
                         <bean class="com.blackfish.springSource.bean.propertyedit.spring.DatePropertyEditorRegistrar"></bean>
+                        <bean class="com.blackfish.springSource.bean.propertyedit.spring.AddressPropertyEditorRegister"/>
                   </list>
             </property>
       </bean>
 
       <bean id="test" class="com.blackfish.springSource.bean.propertyedit.User">
             <property name="brithDay" value="2019-03-07"/>
+            <property name="name" value="2019-03-07"/>
+            <property name="address" value="江苏省-南京市-浦口区"/>
       </bean>
 
 

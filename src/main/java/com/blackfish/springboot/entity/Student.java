@@ -7,6 +7,11 @@ package com.blackfish.springboot.entity;
  */
 public class Student {
 
+    public Student(String name,Integer age) {
+        this.age = age;
+        this.name = name;
+    }
+
     private Integer id;
 
     private Integer age;

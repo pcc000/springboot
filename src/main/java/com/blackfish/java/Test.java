@@ -1,5 +1,7 @@
 package com.blackfish.java;
 
+import com.blackfish.springboot.entity.Student;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,15 +26,14 @@ public class Test {
 
 
     public static void main(String[] args) {
-//        Collections.max();
-//        List<Integer> lists = new ArrayList<>();
-//        List<String> stringLists = new ArrayList<>();
-//        lists.containsAll(stringLists);
-//        Collections.max(lists);
-//        int[] nums = new int[]{2,3,8,7,11};
-//        Test test = new Test();
-//        System.out.println(test.twoSum(nums,9)[0]+" ,"+test.twoSum(nums,9)[1]);
-        int i=3;
-        System.out.println(2&-2);
+//
+        List<Student> students=new ArrayList<>();
+        students.add(new Student("李四",18));
+        students.add(new Student("王五",18));
+        students.add(new Student("张三",12));
+        students.add(new Student("麻子",38));
+        //过滤
+        Long s = students.stream().filter(sss->sss.getAge().equals(15)).count();
+        System.out.println(s);
     }
 }
