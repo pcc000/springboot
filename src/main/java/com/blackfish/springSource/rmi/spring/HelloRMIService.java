@@ -11,4 +11,6 @@ import java.rmi.RemoteException;
 public interface HelloRMIService extends Remote {
 
     public int getAdd(int a,int b) throws RemoteException;
+
+    public String sayHello(String name) throws RemoteException;
 }

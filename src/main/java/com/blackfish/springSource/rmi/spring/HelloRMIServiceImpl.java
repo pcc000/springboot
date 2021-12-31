@@ -18,4 +18,10 @@ public class HelloRMIServiceImpl extends UnicastRemoteObject implements  HelloRM
     public int getAdd(int a, int b) throws RemoteException {
         return a+b;
     }
+
+    @Override
+    public String sayHello(String name) throws RemoteException {
+        System.out.println("server say hello " + name);
+        return "server say hello " + name;
+    }
 }
