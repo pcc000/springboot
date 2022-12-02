@@ -1,5 +1,8 @@
 package com.blackfish.java.suanfa.hard;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Auther: shuyiwei
  * @Date: 2020/6/27 17:49
@@ -34,6 +37,19 @@ public class Hard {
             }
         }
         return result;
+    }
+
+
+    public int sumSubseqWidths(int[] nums) {
+        if(nums.length==0) return 0;
+        Map<String,Integer> map = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            for(int j=0;j<i;j++){
+
+            }
+
+        }
+        return 0;
     }
 
     public static void main(String[] args) {
