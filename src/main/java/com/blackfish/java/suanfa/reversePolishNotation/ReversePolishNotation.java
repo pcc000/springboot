@@ -32,7 +32,7 @@ public class ReversePolishNotation {
         StringBuilder multiNum = new StringBuilder();
         for(int i=0;i<str.length();i++){
             //如果是操作符
-            if(str.charAt(i) <48 || str.charAt(i)> 57){
+            if(str.charAt(i) <48 || str.charAt(i) > 57){
                 if(CollectionUtils.isEmpty(stack)){
                     stack.push(String.valueOf(str.charAt(i)));
                 }else{
