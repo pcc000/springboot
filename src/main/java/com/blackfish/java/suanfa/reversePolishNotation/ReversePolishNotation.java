@@ -37,12 +37,12 @@ public class ReversePolishNotation {
                     stack.push(String.valueOf(str.charAt(i)));
                 }else{
                     String top = stack.peek();
-                    //暂定或当前是( 直接入栈
+                    //栈顶或当前是( 直接入栈
                     if("(".equals(String.valueOf(str.charAt(i))) || top.equals("(")){
                         stack.push(String.valueOf(str.charAt(i)));
                         continue;
                     }
-                    //碰到)  直接出栈 到最近一个(
+                    //碰到)  直接出栈 直到最近一个(
                     if(")".equals(String.valueOf(str.charAt(i)))){
                         while (!top.equals("(")){
                             resultQueue.add(stack.pop());
