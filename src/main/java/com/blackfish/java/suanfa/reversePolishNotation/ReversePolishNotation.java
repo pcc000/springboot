@@ -37,10 +37,12 @@ public class ReversePolishNotation {
                     stack.push(String.valueOf(str.charAt(i)));
                 }else{
                     String top = stack.peek();
+                    //暂定或当前是( 直接入栈
                     if("(".equals(String.valueOf(str.charAt(i))) || top.equals("(")){
                         stack.push(String.valueOf(str.charAt(i)));
                         continue;
                     }
+                    //碰到)  直接出栈 到最近一个(
                     if(")".equals(String.valueOf(str.charAt(i)))){
                         while (!top.equals("(")){
                             resultQueue.add(stack.pop());
@@ -52,6 +54,7 @@ public class ReversePolishNotation {
                     if(operatorMap.get(String.valueOf(str.charAt(i))) > operatorMap.get(top)){
                         stack.push(String.valueOf(str.charAt(i)));
                     }else{
+                        //当前数字 优先级不大于栈顶  一直出栈 直到大于为止
                         while (!stack.isEmpty() && !(operatorMap.get(String.valueOf(str.charAt(i))) > operatorMap.get(top))){
                             top = stack.pop();
                             resultQueue.add(top);
