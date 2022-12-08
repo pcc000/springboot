@@ -50,9 +50,9 @@ public class Huffman {
     }
 
     /**
-     * 将词频率map转化成对应huffmanCode
-  * @param countMap
-     * @return
+     * 将词频率map 转化成对应char -> huaffmanCode
+     * @param countMap
+     * @return 字符和huffmanCode的对应关系
      */
     public static HashMap<Character, String> huffmanForm(HashMap<Character, Integer> countMap) {
         //如果只有一条记录直接返回对应的huffmanCode为0
@@ -79,8 +79,23 @@ public class Huffman {
         }
         Node root = heap.poll();
         //3、根据huffman树生成对应的code
-        Huffman.fillForm(root,"",huffmanCodeMap);
+        fillForm(root,"",huffmanCodeMap);
         return huffmanCodeMap;
+    }
+
+    /**
+     * 将字符传转换成huanffmanCode
+     * @param str
+     * @param map
+     * @return
+     */
+    public String huffmanEncode(String str , HashMap<Character, String> map){
+        StringBuilder stringBuilder = new StringBuilder();
+        char[] chars = str.toCharArray();
+        for(int i=0; i<chars.length; i++){
+            stringBuilder.append(map.get(chars[i]));
+        }
+        return stringBuilder.toString();
     }
 
     /**
