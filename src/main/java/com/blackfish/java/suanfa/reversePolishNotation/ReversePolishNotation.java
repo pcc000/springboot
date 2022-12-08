@@ -4,11 +4,12 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
 
 public class ReversePolishNotation {
 
     private Map<String,Integer> operatorMap = new HashMap<>();
+
+    private List<String> operatorList = Arrays.asList("+","-","*","/");
 
     {
         operatorMap.put("+",10);
@@ -23,6 +24,9 @@ public class ReversePolishNotation {
      * @return
      */
     public Queue<String> getSufix(String str){
+
+        PriorityQueue priorityQueue = new PriorityQueue();
+
         Queue<String> resultQueue = new ArrayDeque<>();
         if(StringUtils.isEmpty(str)){
             return resultQueue;
@@ -79,7 +83,42 @@ public class ReversePolishNotation {
         return resultQueue;
     }
 
+    public int evalRPN(String[] tokens) {
+        if(tokens.length == 0) return 0;
+        Stack<String> stacks = new Stack<>();
+        for(int i=0; i<tokens.length; i++){
+            if(operatorList.contains(tokens[i])){
+                Integer num1 = Integer.valueOf(stacks.pop());
+                Integer num2 = Integer.valueOf(stacks.pop());
+                Integer res = 0;
+                switch (tokens[i]){
+                    case "+":
+                        res = num2 + num1;
+                        break;
+                    case "-":
+                        res = num2 - num1;
+                        break;
+                    case "*":
+                        res = num2 * num1;
+                        break;
+                    case "/":
+                        res = num2 / num1;
+                        break;
+                }
+                stacks.push(res.toString());
+            }else{
+                stacks.push(tokens[i]);
+            }
+        }
+        return Integer.valueOf(stacks.pop());
+    }
 
+
+    /**
+     *
+     * @param suffixExpre
+     * @return
+     */
     public Integer caculate(Queue<String> suffixExpre){
         if(CollectionUtils.isEmpty(suffixExpre)){
             return 0;
