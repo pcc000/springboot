@@ -52,6 +52,7 @@ public class Kruskal {
             while(node != parentMap.get(node)){
                 node = parentMap.get(node);
             }
+            //待优化压缩路径
             return node;
         }
 
@@ -80,10 +81,30 @@ public class Kruskal {
         }
     }
 
+    public static class EdgeComparator implements Comparator<Edge>{
+        @Override
+        public int compare(Edge o1, Edge o2) {
+            return o1.weight - o2.weight;
+        }
+    }
+
 
     public static Set<Edge> kruskalMST(Graph graph) {
-        graph
+        UnionFind unionFind = new UnionFind();
+        unionFind.initUnion(graph.nodes.values());
+        PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(new EdgeComparator());
+        for(Edge edge : graph.edges){
+            priorityQueue.add(edge);
+        }
         Set<Edge> result = new HashSet<>();
+        while (!priorityQueue.isEmpty()){
+            Edge edge = priorityQueue.poll();
+            //判断2个点间是否已经联通过
+            if(!unionFind.isSameUnion(edge.from,edge.to)){
+                unionFind.union(edge.from,edge.to);
+                result.add(edge);
+            }
+        }
         return result;
     }
 }
