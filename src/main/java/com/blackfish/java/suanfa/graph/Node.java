@@ -13,27 +13,27 @@ public class Node {
     /**
      * 节点值
      */
-    private String value;
+    public String value;
 
     /**
      * 入度
      */
-    private Integer in;
+    public Integer in;
 
     /**
      * 出度
      */
-    private Integer out;
+    public Integer out;
 
     /**
      * 当前节点指向的节点
      */
-    private List<Node> nexts;
+    public List<Node> nexts;
 
     /**
      * 从当前节点出发的边
      */
-    private List<Edge> edges;
+    public List<Edge> edges;
 
     public Node(String value) {
         this.value = value;

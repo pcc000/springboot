@@ -7,11 +7,11 @@ package com.blackfish.java.suanfa.graph;
  */
 public class Edge {
 
-    private Integer weight;
+    public Integer weight;
 
-    private Node from;
+    public Node from;
 
-    private Node to;
+    public Node to;
 
     public Edge(Integer weight, Node from, Node to) {
         this.weight = weight;

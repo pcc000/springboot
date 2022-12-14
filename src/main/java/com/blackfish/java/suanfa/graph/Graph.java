@@ -12,9 +12,9 @@ import java.util.Set;
  */
 public class Graph {
 
-    private Map<String,Node> nodes;
+    public Map<String,Node> nodes;
 
-    private Set<Edge> edges;
+    public Set<Edge> edges;
 
     public Graph() {
         nodes = new HashMap<>();
